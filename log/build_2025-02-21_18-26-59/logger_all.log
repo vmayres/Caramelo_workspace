@@ -1,0 +1,140 @@
+[0.116s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--symlink-install']
+[0.116s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=True, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=8, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x7481be79fdc0>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7481be79f8e0>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7481be79f8e0>>)
+[0.279s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.279s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.279s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.279s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.279s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.279s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.279s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/victor/Caramelo_workspace'
+[0.279s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.279s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.279s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.280s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.280s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.280s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.280s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.280s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.280s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.296s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.296s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.297s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.297s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.297s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.297s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.297s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.297s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.297s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.297s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.297s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.297s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.298s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.298s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.298s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.298s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.298s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.298s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.298s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.298s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.298s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.298s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.298s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.298s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[0.298s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[0.298s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[0.298s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[0.299s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[0.299s] Level 1:colcon.colcon_core.package_identification:_identify(src/caramelo_one) by extensions ['ignore', 'ignore_ament_install']
+[0.299s] Level 1:colcon.colcon_core.package_identification:_identify(src/caramelo_one) by extension 'ignore'
+[0.299s] Level 1:colcon.colcon_core.package_identification:_identify(src/caramelo_one) by extension 'ignore_ament_install'
+[0.299s] Level 1:colcon.colcon_core.package_identification:_identify(src/caramelo_one) by extensions ['colcon_pkg']
+[0.299s] Level 1:colcon.colcon_core.package_identification:_identify(src/caramelo_one) by extension 'colcon_pkg'
+[0.299s] Level 1:colcon.colcon_core.package_identification:_identify(src/caramelo_one) by extensions ['colcon_meta']
+[0.299s] Level 1:colcon.colcon_core.package_identification:_identify(src/caramelo_one) by extension 'colcon_meta'
+[0.299s] Level 1:colcon.colcon_core.package_identification:_identify(src/caramelo_one) by extensions ['ros']
+[0.299s] Level 1:colcon.colcon_core.package_identification:_identify(src/caramelo_one) by extension 'ros'
+[0.301s] DEBUG:colcon.colcon_core.package_identification:Package 'src/caramelo_one' with type 'ros.ament_cmake' and name 'caramelo_one'
+[0.301s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.301s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.301s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.301s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.301s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.318s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.318s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.321s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 428 installed packages in /opt/ros/humble
+[0.322s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.368s] Level 5:colcon.colcon_core.verb:set package 'caramelo_one' build argument 'cmake_args' from command line to 'None'
+[0.368s] Level 5:colcon.colcon_core.verb:set package 'caramelo_one' build argument 'cmake_target' from command line to 'None'
+[0.368s] Level 5:colcon.colcon_core.verb:set package 'caramelo_one' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.368s] Level 5:colcon.colcon_core.verb:set package 'caramelo_one' build argument 'cmake_clean_cache' from command line to 'False'
+[0.368s] Level 5:colcon.colcon_core.verb:set package 'caramelo_one' build argument 'cmake_clean_first' from command line to 'False'
+[0.368s] Level 5:colcon.colcon_core.verb:set package 'caramelo_one' build argument 'cmake_force_configure' from command line to 'False'
+[0.368s] Level 5:colcon.colcon_core.verb:set package 'caramelo_one' build argument 'ament_cmake_args' from command line to 'None'
+[0.368s] Level 5:colcon.colcon_core.verb:set package 'caramelo_one' build argument 'catkin_cmake_args' from command line to 'None'
+[0.368s] Level 5:colcon.colcon_core.verb:set package 'caramelo_one' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.368s] DEBUG:colcon.colcon_core.verb:Building package 'caramelo_one' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/victor/Caramelo_workspace/build/caramelo_one', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/victor/Caramelo_workspace/install/caramelo_one', 'merge_install': False, 'path': '/home/victor/Caramelo_workspace/src/caramelo_one', 'symlink_install': True, 'test_result_base': None}
+[0.368s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.369s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.369s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/victor/Caramelo_workspace/src/caramelo_one' with build type 'ament_cmake'
+[0.369s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/victor/Caramelo_workspace/src/caramelo_one'
+[0.371s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.371s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.372s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.378s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/victor/Caramelo_workspace/build/caramelo_one': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/victor/Caramelo_workspace/src/caramelo_one -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/victor/Caramelo_workspace/install/caramelo_one
+[0.730s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/victor/Caramelo_workspace/build/caramelo_one' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/victor/Caramelo_workspace/src/caramelo_one -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/victor/Caramelo_workspace/install/caramelo_one
+[0.733s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/victor/Caramelo_workspace/build/caramelo_one': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/victor/Caramelo_workspace/build/caramelo_one -- -j8 -l8
+[0.767s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/victor/Caramelo_workspace/build/caramelo_one' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/victor/Caramelo_workspace/build/caramelo_one -- -j8 -l8
+[0.795s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/victor/Caramelo_workspace/build/caramelo_one': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/victor/Caramelo_workspace/build/caramelo_one
+[5.060s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(caramelo_one)
+[5.060s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/victor/Caramelo_workspace/build/caramelo_one' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/victor/Caramelo_workspace/build/caramelo_one
+[5.062s] Level 1:colcon.colcon_core.environment:checking '/home/victor/Caramelo_workspace/install/caramelo_one' for CMake module files
+[5.063s] Level 1:colcon.colcon_core.environment:checking '/home/victor/Caramelo_workspace/install/caramelo_one' for CMake config files
+[5.063s] Level 1:colcon.colcon_core.shell:create_environment_hook('caramelo_one', 'cmake_prefix_path')
+[5.063s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/victor/Caramelo_workspace/install/caramelo_one/share/caramelo_one/hook/cmake_prefix_path.ps1'
+[5.064s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/victor/Caramelo_workspace/install/caramelo_one/share/caramelo_one/hook/cmake_prefix_path.dsv'
+[5.064s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/victor/Caramelo_workspace/install/caramelo_one/share/caramelo_one/hook/cmake_prefix_path.sh'
+[5.065s] Level 1:colcon.colcon_core.environment:checking '/home/victor/Caramelo_workspace/install/caramelo_one/bin'
+[5.065s] Level 1:colcon.colcon_core.environment:checking '/home/victor/Caramelo_workspace/install/caramelo_one/lib/pkgconfig/caramelo_one.pc'
+[5.065s] Level 1:colcon.colcon_core.environment:checking '/home/victor/Caramelo_workspace/install/caramelo_one/lib/python3.10/site-packages'
+[5.065s] Level 1:colcon.colcon_core.environment:checking '/home/victor/Caramelo_workspace/install/caramelo_one/bin'
+[5.065s] INFO:colcon.colcon_core.shell:Creating package script '/home/victor/Caramelo_workspace/install/caramelo_one/share/caramelo_one/package.ps1'
+[5.066s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/victor/Caramelo_workspace/install/caramelo_one/share/caramelo_one/package.dsv'
+[5.067s] INFO:colcon.colcon_core.shell:Creating package script '/home/victor/Caramelo_workspace/install/caramelo_one/share/caramelo_one/package.sh'
+[5.067s] INFO:colcon.colcon_core.shell:Creating package script '/home/victor/Caramelo_workspace/install/caramelo_one/share/caramelo_one/package.bash'
+[5.068s] INFO:colcon.colcon_core.shell:Creating package script '/home/victor/Caramelo_workspace/install/caramelo_one/share/caramelo_one/package.zsh'
+[5.068s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/victor/Caramelo_workspace/install/caramelo_one/share/colcon-core/packages/caramelo_one)
+[5.089s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(caramelo_one)
+[5.089s] Level 1:colcon.colcon_core.environment:checking '/home/victor/Caramelo_workspace/install/caramelo_one' for CMake module files
+[5.090s] Level 1:colcon.colcon_core.environment:checking '/home/victor/Caramelo_workspace/install/caramelo_one' for CMake config files
+[5.090s] Level 1:colcon.colcon_core.shell:create_environment_hook('caramelo_one', 'cmake_prefix_path')
+[5.090s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/victor/Caramelo_workspace/install/caramelo_one/share/caramelo_one/hook/cmake_prefix_path.ps1'
+[5.091s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/victor/Caramelo_workspace/install/caramelo_one/share/caramelo_one/hook/cmake_prefix_path.dsv'
+[5.091s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/victor/Caramelo_workspace/install/caramelo_one/share/caramelo_one/hook/cmake_prefix_path.sh'
+[5.092s] Level 1:colcon.colcon_core.environment:checking '/home/victor/Caramelo_workspace/install/caramelo_one/bin'
+[5.092s] Level 1:colcon.colcon_core.environment:checking '/home/victor/Caramelo_workspace/install/caramelo_one/lib/pkgconfig/caramelo_one.pc'
+[5.092s] Level 1:colcon.colcon_core.environment:checking '/home/victor/Caramelo_workspace/install/caramelo_one/lib/python3.10/site-packages'
+[5.092s] Level 1:colcon.colcon_core.environment:checking '/home/victor/Caramelo_workspace/install/caramelo_one/bin'
+[5.093s] INFO:colcon.colcon_core.shell:Creating package script '/home/victor/Caramelo_workspace/install/caramelo_one/share/caramelo_one/package.ps1'
+[5.093s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/victor/Caramelo_workspace/install/caramelo_one/share/caramelo_one/package.dsv'
+[5.094s] INFO:colcon.colcon_core.shell:Creating package script '/home/victor/Caramelo_workspace/install/caramelo_one/share/caramelo_one/package.sh'
+[5.094s] INFO:colcon.colcon_core.shell:Creating package script '/home/victor/Caramelo_workspace/install/caramelo_one/share/caramelo_one/package.bash'
+[5.095s] INFO:colcon.colcon_core.shell:Creating package script '/home/victor/Caramelo_workspace/install/caramelo_one/share/caramelo_one/package.zsh'
+[5.095s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/victor/Caramelo_workspace/install/caramelo_one/share/colcon-core/packages/caramelo_one)
+[5.095s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[5.096s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[5.096s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[5.096s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[5.100s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[5.100s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[5.100s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[5.111s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[5.111s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/victor/Caramelo_workspace/install/local_setup.ps1'
+[5.112s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/victor/Caramelo_workspace/install/_local_setup_util_ps1.py'
+[5.113s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/victor/Caramelo_workspace/install/setup.ps1'
+[5.115s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/victor/Caramelo_workspace/install/local_setup.sh'
+[5.115s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/victor/Caramelo_workspace/install/_local_setup_util_sh.py'
+[5.116s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/victor/Caramelo_workspace/install/setup.sh'
+[5.124s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/victor/Caramelo_workspace/install/local_setup.bash'
+[5.124s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/victor/Caramelo_workspace/install/setup.bash'
+[5.125s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/victor/Caramelo_workspace/install/local_setup.zsh'
+[5.126s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/victor/Caramelo_workspace/install/setup.zsh'

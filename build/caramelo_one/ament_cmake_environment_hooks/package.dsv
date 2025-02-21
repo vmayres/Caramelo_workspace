@@ -1,0 +1,4 @@
+source;share/caramelo_one/local_setup.bash
+source;share/caramelo_one/local_setup.dsv
+source;share/caramelo_one/local_setup.sh
+source;share/caramelo_one/local_setup.zsh

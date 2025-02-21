@@ -1,0 +1,1 @@
+/home/victor/Caramelo_workspace/build/caramelo_one/ament_cmake_environment_hooks/local_setup.sh

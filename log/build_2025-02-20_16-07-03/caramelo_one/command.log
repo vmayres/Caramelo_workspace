@@ -1,0 +1,6 @@
+Invoking command in '/home/victor/Caramelo_workspace/build/caramelo_one': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/victor/Caramelo_workspace/src/caramelo_one -DCMAKE_INSTALL_PREFIX=/home/victor/Caramelo_workspace/install/caramelo_one
+Invoked command in '/home/victor/Caramelo_workspace/build/caramelo_one' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/victor/Caramelo_workspace/src/caramelo_one -DCMAKE_INSTALL_PREFIX=/home/victor/Caramelo_workspace/install/caramelo_one
+Invoking command in '/home/victor/Caramelo_workspace/build/caramelo_one': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/victor/Caramelo_workspace/build/caramelo_one -- -j8 -l8
+Invoked command in '/home/victor/Caramelo_workspace/build/caramelo_one' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/victor/Caramelo_workspace/build/caramelo_one -- -j8 -l8
+Invoking command in '/home/victor/Caramelo_workspace/build/caramelo_one': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/victor/Caramelo_workspace/build/caramelo_one
+Invoked command in '/home/victor/Caramelo_workspace/build/caramelo_one' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/victor/Caramelo_workspace/build/caramelo_one
