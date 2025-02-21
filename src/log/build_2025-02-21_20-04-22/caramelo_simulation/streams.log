@@ -1,0 +1,52 @@
+[0.661s] Invoking command in '/home/victor/Caramelo_workspace/src/caramelo_simulation': PYTHONPATH=/home/victor/Caramelo_workspace/src/build/caramelo_simulation/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/victor/Caramelo_workspace/src/install/caramelo_simulation/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../build/caramelo_simulation build --build-base /home/victor/Caramelo_workspace/src/build/caramelo_simulation/build install --record /home/victor/Caramelo_workspace/src/build/caramelo_simulation/install.log --single-version-externally-managed install_data
+[0.891s] running egg_info
+[0.891s] creating ../build/caramelo_simulation/caramelo_simulation.egg-info
+[0.891s] writing ../build/caramelo_simulation/caramelo_simulation.egg-info/PKG-INFO
+[0.891s] writing dependency_links to ../build/caramelo_simulation/caramelo_simulation.egg-info/dependency_links.txt
+[0.891s] writing entry points to ../build/caramelo_simulation/caramelo_simulation.egg-info/entry_points.txt
+[0.892s] writing requirements to ../build/caramelo_simulation/caramelo_simulation.egg-info/requires.txt
+[0.892s] writing top-level names to ../build/caramelo_simulation/caramelo_simulation.egg-info/top_level.txt
+[0.892s] writing manifest file '../build/caramelo_simulation/caramelo_simulation.egg-info/SOURCES.txt'
+[0.894s] reading manifest file '../build/caramelo_simulation/caramelo_simulation.egg-info/SOURCES.txt'
+[0.895s] writing manifest file '../build/caramelo_simulation/caramelo_simulation.egg-info/SOURCES.txt'
+[0.895s] running build
+[0.895s] running build_py
+[0.895s] creating /home/victor/Caramelo_workspace/src/build/caramelo_simulation/build
+[0.895s] creating /home/victor/Caramelo_workspace/src/build/caramelo_simulation/build/lib
+[0.895s] creating /home/victor/Caramelo_workspace/src/build/caramelo_simulation/build/lib/caramelo_simulation
+[0.895s] copying caramelo_simulation/__init__.py -> /home/victor/Caramelo_workspace/src/build/caramelo_simulation/build/lib/caramelo_simulation
+[0.895s] running install
+[0.895s] running install_lib
+[0.896s] creating /home/victor/Caramelo_workspace/src/install/caramelo_simulation/lib/python3.10/site-packages/caramelo_simulation
+[0.897s] copying /home/victor/Caramelo_workspace/src/build/caramelo_simulation/build/lib/caramelo_simulation/__init__.py -> /home/victor/Caramelo_workspace/src/install/caramelo_simulation/lib/python3.10/site-packages/caramelo_simulation
+[0.897s] byte-compiling /home/victor/Caramelo_workspace/src/install/caramelo_simulation/lib/python3.10/site-packages/caramelo_simulation/__init__.py to __init__.cpython-310.pyc
+[0.897s] running install_data
+[0.897s] creating /home/victor/Caramelo_workspace/src/install/caramelo_simulation/share/ament_index
+[0.898s] creating /home/victor/Caramelo_workspace/src/install/caramelo_simulation/share/ament_index/resource_index
+[0.898s] creating /home/victor/Caramelo_workspace/src/install/caramelo_simulation/share/ament_index/resource_index/packages
+[0.898s] copying resource/caramelo_simulation -> /home/victor/Caramelo_workspace/src/install/caramelo_simulation/share/ament_index/resource_index/packages
+[0.898s] copying package.xml -> /home/victor/Caramelo_workspace/src/install/caramelo_simulation/share/caramelo_simulation
+[0.898s] creating /home/victor/Caramelo_workspace/src/install/caramelo_simulation/share/caramelo_simulation/config
+[0.898s] copying config/mapper_params_online_async.yaml -> /home/victor/Caramelo_workspace/src/install/caramelo_simulation/share/caramelo_simulation/config
+[0.898s] copying config/view_robot.rviz -> /home/victor/Caramelo_workspace/src/install/caramelo_simulation/share/caramelo_simulation/config
+[0.898s] creating /home/victor/Caramelo_workspace/src/install/caramelo_simulation/share/caramelo_simulation/description
+[0.898s] copying description/inertial_macros.xacro -> /home/victor/Caramelo_workspace/src/install/caramelo_simulation/share/caramelo_simulation/description
+[0.898s] copying description/laser.xacro -> /home/victor/Caramelo_workspace/src/install/caramelo_simulation/share/caramelo_simulation/description
+[0.898s] copying description/robot.urdf.xacro -> /home/victor/Caramelo_workspace/src/install/caramelo_simulation/share/caramelo_simulation/description
+[0.898s] copying description/camera.xacro -> /home/victor/Caramelo_workspace/src/install/caramelo_simulation/share/caramelo_simulation/description
+[0.899s] copying description/robot_core.xacro -> /home/victor/Caramelo_workspace/src/install/caramelo_simulation/share/caramelo_simulation/description
+[0.899s] copying description/gazebo_control.xacro -> /home/victor/Caramelo_workspace/src/install/caramelo_simulation/share/caramelo_simulation/description
+[0.899s] creating /home/victor/Caramelo_workspace/src/install/caramelo_simulation/share/caramelo_simulation/launch
+[0.899s] copying launch/launch_worldsim.launch.py -> /home/victor/Caramelo_workspace/src/install/caramelo_simulation/share/caramelo_simulation/launch
+[0.899s] copying launch/rplidar.launch.py -> /home/victor/Caramelo_workspace/src/install/caramelo_simulation/share/caramelo_simulation/launch
+[0.899s] copying launch/rsp.launch.py -> /home/victor/Caramelo_workspace/src/install/caramelo_simulation/share/caramelo_simulation/launch
+[0.899s] copying launch/launch_sim.launch.py -> /home/victor/Caramelo_workspace/src/install/caramelo_simulation/share/caramelo_simulation/launch
+[0.899s] copying launch/camera.launch..py -> /home/victor/Caramelo_workspace/src/install/caramelo_simulation/share/caramelo_simulation/launch
+[0.899s] creating /home/victor/Caramelo_workspace/src/install/caramelo_simulation/share/caramelo_simulation/worlds
+[0.899s] copying worlds/simple_room_with_fixed_boxes.world -> /home/victor/Caramelo_workspace/src/install/caramelo_simulation/share/caramelo_simulation/worlds
+[0.899s] copying worlds/small_warehouse.world -> /home/victor/Caramelo_workspace/src/install/caramelo_simulation/share/caramelo_simulation/worlds
+[0.900s] copying worlds/empty.world -> /home/victor/Caramelo_workspace/src/install/caramelo_simulation/share/caramelo_simulation/worlds
+[0.900s] copying worlds/small_house.world -> /home/victor/Caramelo_workspace/src/install/caramelo_simulation/share/caramelo_simulation/worlds
+[0.900s] creating /home/victor/Caramelo_workspace/src/install/caramelo_simulation/share/caramelo_simulation/models
+[0.900s] error: can't copy 'models/aws_robomaker_residential_Carpet_01': doesn't exist or not a regular file
+[0.915s] Invoked command in '/home/victor/Caramelo_workspace/src/caramelo_simulation' returned '1': PYTHONPATH=/home/victor/Caramelo_workspace/src/build/caramelo_simulation/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/victor/Caramelo_workspace/src/install/caramelo_simulation/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../build/caramelo_simulation build --build-base /home/victor/Caramelo_workspace/src/build/caramelo_simulation/build install --record /home/victor/Caramelo_workspace/src/build/caramelo_simulation/install.log --single-version-externally-managed install_data

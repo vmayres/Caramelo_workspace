@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <link name="laser_frame" type="fixed">
+        <visual>
+            <geometry>
+                <cylinder length="0.016" radius="0.030" />
+            </geometry>
+            <material name="red" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="0.016" radius="0.030" />
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder mass="0.1" length="0.016" radius="0.030">
+            <origin xyz="0 0 0" />
+        </xacro:inertial_cylinder>
+    </link>
+
+    <joint name="laser_joint" type="fixed">
+        <parent link="chassi" />
+        <child link="laser_frame" />
+        <origin xyz="0.273 0.012 0" rpy="0 0 0" />
+    </joint>
+
+    <!-- TODO: Laser frame (RPlidar2) -->
+    <gazebo reference="laser_frame">
+        <material>Gazebo/Red</material>
+
+        <sensor name="laser" type="ray">
+            <pose> 0 0 0 0 0 0 </pose>
+            <visualize>true</visualize>
+            <update_rate>10</update_rate>
+            <ray>
+                <scan>
+                    <horizontal>
+                        <samples>360</samples>
+                        <min_angle>-1.57</min_angle>
+                        <max_angle>1.57</max_angle>
+                    </horizontal>
+                </scan>
+                <range>
+                    <min>0.3</min>
+                    <max>20</max>
+                </range>
+            </ray>
+            <plugin name="laser_controller" filename="libgazebo_ros_ray_sensor.so">
+                <ros>
+                    <argument>~/out:=scan</argument>
+                </ros>
+                <output_type>sensor_msgs/LaserScan</output_type>
+                <frame_name>laser_frame</frame_name>
+            </plugin>
+        </sensor>
+    </gazebo>
+
+</robot>

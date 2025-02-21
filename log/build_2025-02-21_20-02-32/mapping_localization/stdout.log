@@ -1,0 +1,25 @@
+running egg_info
+creating ../../build/mapping_localization/mapping_localization.egg-info
+writing ../../build/mapping_localization/mapping_localization.egg-info/PKG-INFO
+writing dependency_links to ../../build/mapping_localization/mapping_localization.egg-info/dependency_links.txt
+writing entry points to ../../build/mapping_localization/mapping_localization.egg-info/entry_points.txt
+writing requirements to ../../build/mapping_localization/mapping_localization.egg-info/requires.txt
+writing top-level names to ../../build/mapping_localization/mapping_localization.egg-info/top_level.txt
+writing manifest file '../../build/mapping_localization/mapping_localization.egg-info/SOURCES.txt'
+reading manifest file '../../build/mapping_localization/mapping_localization.egg-info/SOURCES.txt'
+writing manifest file '../../build/mapping_localization/mapping_localization.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/victor/Caramelo_workspace/build/mapping_localization/build
+creating /home/victor/Caramelo_workspace/build/mapping_localization/build/lib
+creating /home/victor/Caramelo_workspace/build/mapping_localization/build/lib/mappingLocalization
+copying mappingLocalization/__init__.py -> /home/victor/Caramelo_workspace/build/mapping_localization/build/lib/mappingLocalization
+running install
+running install_lib
+creating /home/victor/Caramelo_workspace/install/mapping_localization/lib/python3.10/site-packages/mappingLocalization
+copying /home/victor/Caramelo_workspace/build/mapping_localization/build/lib/mappingLocalization/__init__.py -> /home/victor/Caramelo_workspace/install/mapping_localization/lib/python3.10/site-packages/mappingLocalization
+byte-compiling /home/victor/Caramelo_workspace/install/mapping_localization/lib/python3.10/site-packages/mappingLocalization/__init__.py to __init__.cpython-310.pyc
+running install_data
+creating /home/victor/Caramelo_workspace/install/mapping_localization/share/ament_index
+creating /home/victor/Caramelo_workspace/install/mapping_localization/share/ament_index/resource_index
+creating /home/victor/Caramelo_workspace/install/mapping_localization/share/ament_index/resource_index/packages

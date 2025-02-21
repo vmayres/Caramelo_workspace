@@ -1,0 +1,9 @@
+source;share/mappingLocalization/hook/pythonpath.ps1
+source;share/mappingLocalization/hook/pythonpath.dsv
+source;share/mappingLocalization/hook/pythonpath.sh
+source;share/mappingLocalization/hook/ament_prefix_path.ps1
+source;share/mappingLocalization/hook/ament_prefix_path.dsv
+source;share/mappingLocalization/hook/ament_prefix_path.sh
+source;../../build/mappingLocalization/share/mappingLocalization/hook/pythonpath_develop.ps1
+source;../../build/mappingLocalization/share/mappingLocalization/hook/pythonpath_develop.dsv
+source;../../build/mappingLocalization/share/mappingLocalization/hook/pythonpath_develop.sh

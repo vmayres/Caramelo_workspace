@@ -1,0 +1,43 @@
+running develop
+running egg_info
+creating caramelo_simulation.egg-info
+writing caramelo_simulation.egg-info/PKG-INFO
+writing dependency_links to caramelo_simulation.egg-info/dependency_links.txt
+writing entry points to caramelo_simulation.egg-info/entry_points.txt
+writing requirements to caramelo_simulation.egg-info/requires.txt
+writing top-level names to caramelo_simulation.egg-info/top_level.txt
+writing manifest file 'caramelo_simulation.egg-info/SOURCES.txt'
+reading manifest file 'caramelo_simulation.egg-info/SOURCES.txt'
+writing manifest file 'caramelo_simulation.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/victor/Caramelo_workspace/install/caramelo_simulation/lib/python3.10/site-packages/caramelo-simulation.egg-link (link to .)
+
+Installed /home/victor/Caramelo_workspace/build/caramelo_simulation
+running symlink_data
+creating /home/victor/Caramelo_workspace/install/caramelo_simulation/share/ament_index
+creating /home/victor/Caramelo_workspace/install/caramelo_simulation/share/ament_index/resource_index
+creating /home/victor/Caramelo_workspace/install/caramelo_simulation/share/ament_index/resource_index/packages
+symbolically linking /home/victor/Caramelo_workspace/build/caramelo_simulation/resource/caramelo_simulation -> /home/victor/Caramelo_workspace/install/caramelo_simulation/share/ament_index/resource_index/packages
+symbolically linking /home/victor/Caramelo_workspace/build/caramelo_simulation/package.xml -> /home/victor/Caramelo_workspace/install/caramelo_simulation/share/caramelo_simulation
+creating /home/victor/Caramelo_workspace/install/caramelo_simulation/share/caramelo_simulation/config
+symbolically linking /home/victor/Caramelo_workspace/build/caramelo_simulation/config/mapper_params_online_async.yaml -> /home/victor/Caramelo_workspace/install/caramelo_simulation/share/caramelo_simulation/config
+symbolically linking /home/victor/Caramelo_workspace/build/caramelo_simulation/config/view_robot.rviz -> /home/victor/Caramelo_workspace/install/caramelo_simulation/share/caramelo_simulation/config
+creating /home/victor/Caramelo_workspace/install/caramelo_simulation/share/caramelo_simulation/description
+symbolically linking /home/victor/Caramelo_workspace/build/caramelo_simulation/description/inertial_macros.xacro -> /home/victor/Caramelo_workspace/install/caramelo_simulation/share/caramelo_simulation/description
+symbolically linking /home/victor/Caramelo_workspace/build/caramelo_simulation/description/laser.xacro -> /home/victor/Caramelo_workspace/install/caramelo_simulation/share/caramelo_simulation/description
+symbolically linking /home/victor/Caramelo_workspace/build/caramelo_simulation/description/robot.urdf.xacro -> /home/victor/Caramelo_workspace/install/caramelo_simulation/share/caramelo_simulation/description
+symbolically linking /home/victor/Caramelo_workspace/build/caramelo_simulation/description/camera.xacro -> /home/victor/Caramelo_workspace/install/caramelo_simulation/share/caramelo_simulation/description
+symbolically linking /home/victor/Caramelo_workspace/build/caramelo_simulation/description/robot_core.xacro -> /home/victor/Caramelo_workspace/install/caramelo_simulation/share/caramelo_simulation/description
+symbolically linking /home/victor/Caramelo_workspace/build/caramelo_simulation/description/gazebo_control.xacro -> /home/victor/Caramelo_workspace/install/caramelo_simulation/share/caramelo_simulation/description
+creating /home/victor/Caramelo_workspace/install/caramelo_simulation/share/caramelo_simulation/launch
+symbolically linking /home/victor/Caramelo_workspace/build/caramelo_simulation/launch/launch_worldsim.launch.py -> /home/victor/Caramelo_workspace/install/caramelo_simulation/share/caramelo_simulation/launch
+symbolically linking /home/victor/Caramelo_workspace/build/caramelo_simulation/launch/rplidar.launch.py -> /home/victor/Caramelo_workspace/install/caramelo_simulation/share/caramelo_simulation/launch
+symbolically linking /home/victor/Caramelo_workspace/build/caramelo_simulation/launch/rsp.launch.py -> /home/victor/Caramelo_workspace/install/caramelo_simulation/share/caramelo_simulation/launch
+symbolically linking /home/victor/Caramelo_workspace/build/caramelo_simulation/launch/launch_sim.launch.py -> /home/victor/Caramelo_workspace/install/caramelo_simulation/share/caramelo_simulation/launch
+symbolically linking /home/victor/Caramelo_workspace/build/caramelo_simulation/launch/camera.launch..py -> /home/victor/Caramelo_workspace/install/caramelo_simulation/share/caramelo_simulation/launch
+creating /home/victor/Caramelo_workspace/install/caramelo_simulation/share/caramelo_simulation/worlds
+symbolically linking /home/victor/Caramelo_workspace/build/caramelo_simulation/worlds/simple_room_with_fixed_boxes.world -> /home/victor/Caramelo_workspace/install/caramelo_simulation/share/caramelo_simulation/worlds
+symbolically linking /home/victor/Caramelo_workspace/build/caramelo_simulation/worlds/small_warehouse.world -> /home/victor/Caramelo_workspace/install/caramelo_simulation/share/caramelo_simulation/worlds
+symbolically linking /home/victor/Caramelo_workspace/build/caramelo_simulation/worlds/empty.world -> /home/victor/Caramelo_workspace/install/caramelo_simulation/share/caramelo_simulation/worlds
+symbolically linking /home/victor/Caramelo_workspace/build/caramelo_simulation/worlds/small_house.world -> /home/victor/Caramelo_workspace/install/caramelo_simulation/share/caramelo_simulation/worlds
+creating /home/victor/Caramelo_workspace/install/caramelo_simulation/share/caramelo_simulation/models
