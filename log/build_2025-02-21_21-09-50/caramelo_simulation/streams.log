@@ -1,0 +1,20 @@
+[0.681s] Invoking command in '/home/victor/Caramelo_workspace/src/caramelo_simulation': PYTHONPATH=/home/victor/Caramelo_workspace/build/caramelo_simulation/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/victor/Caramelo_workspace/install/caramelo_simulation/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/caramelo_simulation build --build-base /home/victor/Caramelo_workspace/build/caramelo_simulation/build install --record /home/victor/Caramelo_workspace/build/caramelo_simulation/install.log --single-version-externally-managed install_data
+[0.909s] running egg_info
+[0.909s] writing ../../build/caramelo_simulation/caramelo_simulation.egg-info/PKG-INFO
+[0.910s] writing dependency_links to ../../build/caramelo_simulation/caramelo_simulation.egg-info/dependency_links.txt
+[0.910s] writing entry points to ../../build/caramelo_simulation/caramelo_simulation.egg-info/entry_points.txt
+[0.910s] writing requirements to ../../build/caramelo_simulation/caramelo_simulation.egg-info/requires.txt
+[0.910s] writing top-level names to ../../build/caramelo_simulation/caramelo_simulation.egg-info/top_level.txt
+[0.911s] reading manifest file '../../build/caramelo_simulation/caramelo_simulation.egg-info/SOURCES.txt'
+[0.912s] writing manifest file '../../build/caramelo_simulation/caramelo_simulation.egg-info/SOURCES.txt'
+[0.912s] running build
+[0.912s] running build_py
+[0.913s] running install
+[0.913s] running install_lib
+[0.914s] running install_data
+[0.914s] running install_egg_info
+[0.916s] removing '/home/victor/Caramelo_workspace/install/caramelo_simulation/lib/python3.10/site-packages/caramelo_simulation-0.0.1-py3.10.egg-info' (and everything under it)
+[0.916s] Copying ../../build/caramelo_simulation/caramelo_simulation.egg-info to /home/victor/Caramelo_workspace/install/caramelo_simulation/lib/python3.10/site-packages/caramelo_simulation-0.0.1-py3.10.egg-info
+[0.917s] running install_scripts
+[0.935s] writing list of installed files to '/home/victor/Caramelo_workspace/build/caramelo_simulation/install.log'
+[0.954s] Invoked command in '/home/victor/Caramelo_workspace/src/caramelo_simulation' returned '0': PYTHONPATH=/home/victor/Caramelo_workspace/build/caramelo_simulation/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/victor/Caramelo_workspace/install/caramelo_simulation/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/caramelo_simulation build --build-base /home/victor/Caramelo_workspace/build/caramelo_simulation/build install --record /home/victor/Caramelo_workspace/build/caramelo_simulation/install.log --single-version-externally-managed install_data

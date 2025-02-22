@@ -22,9 +22,5 @@ launch/launch_sim.launch.py
 launch/launch_worldsim.launch.py
 launch/rplidar.launch.py
 launch/rsp.launch.py
-resource/caramelo_simulation
-test/test_copyright.py
-test/test_flake8.py
-test/test_pep257.py
 worlds/empty.world
 worlds/simple_room_with_fixed_boxes.world

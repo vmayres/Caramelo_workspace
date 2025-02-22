@@ -1,6 +1,5 @@
 /home/victor/Caramelo_workspace/install/caramelo_simulation/lib/python3.10/site-packages/caramelo_simulation/__init__.py
 /home/victor/Caramelo_workspace/install/caramelo_simulation/lib/python3.10/site-packages/caramelo_simulation/__pycache__/__init__.cpython-310.pyc
-/home/victor/Caramelo_workspace/install/caramelo_simulation/share/ament_index/resource_index/packages/caramelo_simulation
 /home/victor/Caramelo_workspace/install/caramelo_simulation/share/caramelo_simulation/package.xml
 /home/victor/Caramelo_workspace/install/caramelo_simulation/share/caramelo_simulation/config/mapper_params_online_async.yaml
 /home/victor/Caramelo_workspace/install/caramelo_simulation/share/caramelo_simulation/config/view_robot.rviz
@@ -17,7 +16,6 @@
 /home/victor/Caramelo_workspace/install/caramelo_simulation/share/caramelo_simulation/launch/camera.launch..py
 /home/victor/Caramelo_workspace/install/caramelo_simulation/share/caramelo_simulation/worlds/simple_room_with_fixed_boxes.world
 /home/victor/Caramelo_workspace/install/caramelo_simulation/share/caramelo_simulation/worlds/empty.world
-/home/victor/Caramelo_workspace/install/caramelo_simulation/share/caramelo_simulation/models
 /home/victor/Caramelo_workspace/install/caramelo_simulation/share/caramelo_simulation/photos
 /home/victor/Caramelo_workspace/install/caramelo_simulation/lib/python3.10/site-packages/caramelo_simulation-0.0.1-py3.10.egg-info/requires.txt
 /home/victor/Caramelo_workspace/install/caramelo_simulation/lib/python3.10/site-packages/caramelo_simulation-0.0.1-py3.10.egg-info/entry_points.txt

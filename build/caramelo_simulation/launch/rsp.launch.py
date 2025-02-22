@@ -1,1 +1,0 @@
-/home/victor/Caramelo_workspace/src/caramelo_simulation/launch/rsp.launch.py
