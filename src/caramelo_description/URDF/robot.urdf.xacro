@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<robot name="caramelo" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!-- Modelos para simular o robo-->
+  <xacro:include filename="robot_core.xacro" />
+
+  <!-- Controle ros2_control para rodas Mecanum -->
+  
+
+</robot>

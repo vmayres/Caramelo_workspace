@@ -10,6 +10,3 @@ setup.py
 ../../build/caramelo_description/caramelo_description.egg-info/zip-safe
 caramelo_description/__init__.py
 resource/caramelo_description
-test/test_copyright.py
-test/test_flake8.py
-test/test_pep257.py

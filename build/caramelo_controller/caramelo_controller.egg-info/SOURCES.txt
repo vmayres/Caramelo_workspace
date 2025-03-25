@@ -10,6 +10,3 @@ setup.py
 ../../build/caramelo_controller/caramelo_controller.egg-info/zip-safe
 caramelo_controller/__init__.py
 resource/caramelo_controller
-test/test_copyright.py
-test/test_flake8.py
-test/test_pep257.py
