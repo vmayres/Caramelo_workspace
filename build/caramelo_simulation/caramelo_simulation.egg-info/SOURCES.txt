@@ -12,9 +12,11 @@ caramelo_simulation/__init__.py
 config/mapper_params_online_async.yaml
 config/view_robot.rviz
 description/camera.xacro
-description/gazebo_control.xacro
 description/inertial_macros.xacro
 description/laser.xacro
+description/mecanum_controller.yaml
+description/mecanum_gazebo.xacro
+description/mecanum_ros2_control.xacro
 description/robot.urdf.xacro
 description/robot_core.xacro
 launch/camera.launch..py
@@ -22,5 +24,6 @@ launch/launch_sim.launch.py
 launch/launch_worldsim.launch.py
 launch/rplidar.launch.py
 launch/rsp.launch.py
+resource/caramelo_simulation
 worlds/empty.world
-worlds/simple_room_with_fixed_boxes.world
+worlds/obstracles.world

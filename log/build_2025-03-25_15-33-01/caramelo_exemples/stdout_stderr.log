@@ -1,0 +1,35 @@
+running egg_info
+creating ../../build/caramelo_exemples/caramelo_exemples.egg-info
+writing ../../build/caramelo_exemples/caramelo_exemples.egg-info/PKG-INFO
+writing dependency_links to ../../build/caramelo_exemples/caramelo_exemples.egg-info/dependency_links.txt
+writing entry points to ../../build/caramelo_exemples/caramelo_exemples.egg-info/entry_points.txt
+writing requirements to ../../build/caramelo_exemples/caramelo_exemples.egg-info/requires.txt
+writing top-level names to ../../build/caramelo_exemples/caramelo_exemples.egg-info/top_level.txt
+writing manifest file '../../build/caramelo_exemples/caramelo_exemples.egg-info/SOURCES.txt'
+reading manifest file '../../build/caramelo_exemples/caramelo_exemples.egg-info/SOURCES.txt'
+writing manifest file '../../build/caramelo_exemples/caramelo_exemples.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/victor/Caramelo_workspace/build/caramelo_exemples/build
+creating /home/victor/Caramelo_workspace/build/caramelo_exemples/build/lib
+creating /home/victor/Caramelo_workspace/build/caramelo_exemples/build/lib/caramelo_exemples
+copying caramelo_exemples/simple_parameter.py -> /home/victor/Caramelo_workspace/build/caramelo_exemples/build/lib/caramelo_exemples
+copying caramelo_exemples/__init__.py -> /home/victor/Caramelo_workspace/build/caramelo_exemples/build/lib/caramelo_exemples
+running install
+running install_lib
+creating /home/victor/Caramelo_workspace/install/caramelo_exemples/lib/python3.10/site-packages/caramelo_exemples
+copying /home/victor/Caramelo_workspace/build/caramelo_exemples/build/lib/caramelo_exemples/simple_parameter.py -> /home/victor/Caramelo_workspace/install/caramelo_exemples/lib/python3.10/site-packages/caramelo_exemples
+copying /home/victor/Caramelo_workspace/build/caramelo_exemples/build/lib/caramelo_exemples/__init__.py -> /home/victor/Caramelo_workspace/install/caramelo_exemples/lib/python3.10/site-packages/caramelo_exemples
+byte-compiling /home/victor/Caramelo_workspace/install/caramelo_exemples/lib/python3.10/site-packages/caramelo_exemples/simple_parameter.py to simple_parameter.cpython-310.pyc
+byte-compiling /home/victor/Caramelo_workspace/install/caramelo_exemples/lib/python3.10/site-packages/caramelo_exemples/__init__.py to __init__.cpython-310.pyc
+running install_data
+creating /home/victor/Caramelo_workspace/install/caramelo_exemples/share/ament_index
+creating /home/victor/Caramelo_workspace/install/caramelo_exemples/share/ament_index/resource_index
+creating /home/victor/Caramelo_workspace/install/caramelo_exemples/share/ament_index/resource_index/packages
+copying resource/caramelo_exemples -> /home/victor/Caramelo_workspace/install/caramelo_exemples/share/ament_index/resource_index/packages
+copying package.xml -> /home/victor/Caramelo_workspace/install/caramelo_exemples/share/caramelo_exemples
+running install_egg_info
+Copying ../../build/caramelo_exemples/caramelo_exemples.egg-info to /home/victor/Caramelo_workspace/install/caramelo_exemples/lib/python3.10/site-packages/caramelo_exemples-0.0.0-py3.10.egg-info
+running install_scripts
+Installing simple_parameter script to /home/victor/Caramelo_workspace/install/caramelo_exemples/lib/caramelo_exemples
+writing list of installed files to '/home/victor/Caramelo_workspace/build/caramelo_exemples/install.log'

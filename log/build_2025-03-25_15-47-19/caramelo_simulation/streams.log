@@ -1,0 +1,22 @@
+[1.439s] Invoking command in '/home/victor/Caramelo_workspace/src/caramelo_simulation': PYTHONPATH=/home/victor/Caramelo_workspace/build/caramelo_simulation/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/victor/Caramelo_workspace/install/caramelo_simulation/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/caramelo_simulation build --build-base /home/victor/Caramelo_workspace/build/caramelo_simulation/build install --record /home/victor/Caramelo_workspace/build/caramelo_simulation/install.log --single-version-externally-managed install_data
+[1.743s] running egg_info
+[1.744s] writing ../../build/caramelo_simulation/caramelo_simulation.egg-info/PKG-INFO
+[1.744s] writing dependency_links to ../../build/caramelo_simulation/caramelo_simulation.egg-info/dependency_links.txt
+[1.744s] writing entry points to ../../build/caramelo_simulation/caramelo_simulation.egg-info/entry_points.txt
+[1.744s] writing requirements to ../../build/caramelo_simulation/caramelo_simulation.egg-info/requires.txt
+[1.744s] writing top-level names to ../../build/caramelo_simulation/caramelo_simulation.egg-info/top_level.txt
+[1.747s] reading manifest file '../../build/caramelo_simulation/caramelo_simulation.egg-info/SOURCES.txt'
+[1.748s] writing manifest file '../../build/caramelo_simulation/caramelo_simulation.egg-info/SOURCES.txt'
+[1.748s] running build
+[1.748s] running build_py
+[1.748s] running install
+[1.749s] running install_lib
+[1.750s] running install_data
+[1.750s] copying description/mecanum_ros2_control.xacro -> /home/victor/Caramelo_workspace/install/caramelo_simulation/share/caramelo_simulation/description
+[1.750s] copying description/robot_core.xacro -> /home/victor/Caramelo_workspace/install/caramelo_simulation/share/caramelo_simulation/description
+[1.751s] running install_egg_info
+[1.753s] removing '/home/victor/Caramelo_workspace/install/caramelo_simulation/lib/python3.10/site-packages/caramelo_simulation-0.0.1-py3.10.egg-info' (and everything under it)
+[1.753s] Copying ../../build/caramelo_simulation/caramelo_simulation.egg-info to /home/victor/Caramelo_workspace/install/caramelo_simulation/lib/python3.10/site-packages/caramelo_simulation-0.0.1-py3.10.egg-info
+[1.754s] running install_scripts
+[1.777s] writing list of installed files to '/home/victor/Caramelo_workspace/build/caramelo_simulation/install.log'
+[1.812s] Invoked command in '/home/victor/Caramelo_workspace/src/caramelo_simulation' returned '0': PYTHONPATH=/home/victor/Caramelo_workspace/build/caramelo_simulation/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/victor/Caramelo_workspace/install/caramelo_simulation/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/caramelo_simulation build --build-base /home/victor/Caramelo_workspace/build/caramelo_simulation/build install --record /home/victor/Caramelo_workspace/build/caramelo_simulation/install.log --single-version-externally-managed install_data
