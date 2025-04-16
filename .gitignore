@@ -1,0 +1,49 @@
+# === ROS 2 / Colcon build system ===
+build/
+install/
+log/
+colcon_install_layout.*
+
+# === ROS 2 generated files ===
+*.pyc
+*.pyo
+*.swp
+*.DS_Store
+*.log
+*.bak
+
+# === ROS 2 launch files cache ===
+*.launch.pyc
+
+# === ROS 2 workspace overlays ===
+local_setup.*
+setup.*
+.env
+.env.*
+*.bash
+*.sh
+
+# === ROS 2 test results ===
+test_results/
+
+# === rosdep ===
+rosdep/
+
+# === IDEs / Editors ===
+.vscode/
+.idea/
+*.code-workspace
+
+# === CMake / Catkin artifacts ===
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# === Python virtualenvs ===
+venv/
+.env/
+
+# === Misc ===
+*.egg-info/
+__pycache__/

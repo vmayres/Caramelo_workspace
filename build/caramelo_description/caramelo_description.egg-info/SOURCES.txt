@@ -8,5 +8,13 @@ setup.py
 ../../build/caramelo_description/caramelo_description.egg-info/requires.txt
 ../../build/caramelo_description/caramelo_description.egg-info/top_level.txt
 ../../build/caramelo_description/caramelo_description.egg-info/zip-safe
+URDF/inertial_macros.xacro
+URDF/robot.urdf.xacro
+URDF/robot_core.xacro
+URDF/robot_gazebo.xacro
+URDF/robot_ros2_control.xacro
 caramelo_description/__init__.py
+launch/display.launch.py
+launch/gazebo.launch.py
 resource/caramelo_description
+rviz/display.rviz

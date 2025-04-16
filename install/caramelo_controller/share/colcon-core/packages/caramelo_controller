@@ -1,1 +1,1 @@
-rclpy
+controller_manager:hardware_interface:joint_state_broadcaster:mecanum_drive_controller:rclpy:ros2_control:ros2_controllers:ros2launch

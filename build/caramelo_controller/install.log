@@ -2,6 +2,8 @@
 /home/victor/Caramelo_workspace/install/caramelo_controller/lib/python3.10/site-packages/caramelo_controller/__pycache__/__init__.cpython-310.pyc
 /home/victor/Caramelo_workspace/install/caramelo_controller/share/ament_index/resource_index/packages/caramelo_controller
 /home/victor/Caramelo_workspace/install/caramelo_controller/share/caramelo_controller/package.xml
+/home/victor/Caramelo_workspace/install/caramelo_controller/share/caramelo_controller/config/robot_controllers.yaml
+/home/victor/Caramelo_workspace/install/caramelo_controller/share/caramelo_controller/launch/controler.launch.py
 /home/victor/Caramelo_workspace/install/caramelo_controller/lib/python3.10/site-packages/caramelo_controller-0.0.0-py3.10.egg-info/requires.txt
 /home/victor/Caramelo_workspace/install/caramelo_controller/lib/python3.10/site-packages/caramelo_controller-0.0.0-py3.10.egg-info/entry_points.txt
 /home/victor/Caramelo_workspace/install/caramelo_controller/lib/python3.10/site-packages/caramelo_controller-0.0.0-py3.10.egg-info/PKG-INFO
