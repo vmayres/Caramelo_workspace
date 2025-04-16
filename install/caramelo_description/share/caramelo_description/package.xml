@@ -3,9 +3,11 @@
 <package format="3">
   <name>caramelo_description</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <description>URDF, meshes, and launch files for the Caramelo robot</description>
   <maintainer email="victoroliveiraayres@gmail.com">victor</maintainer>
-  <license>TODO: License declaration</license>
+  <license>MIT</license>
+
+  <buildtool_depend>ament_python</buildtool_depend>
 
   <depend>rclpy</depend>
 
@@ -14,9 +16,12 @@
   <exec_depend>joint_state_publisher_gui</exec_depend>
   <exec_depend>rviz2</exec_depend>
   <exec_depend>xacro</exec_depend>
-  <exec_depend>ros2launch</exec_depend>
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
   <exec_depend>ros_gz_sim</exec_depend>
-  <exec_depend>ing_ros2_control</exec_depend>
+
+  <exec_depend condition="$ROS_DISTRO == humble">ign_ros2_control</exec_depend>
+  <exec_depend condition="$ROS_DISTRO >= iron">gz_ros2_control</exec_depend>
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>

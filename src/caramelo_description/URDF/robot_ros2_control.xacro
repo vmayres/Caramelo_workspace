@@ -1,36 +1,44 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://ros.org/wiki/xacro">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="caramelo">
 
-  <ros2_control name="RobotSystem" type="system">
+    <ros2_control name="RobotSystem" type="system">
 
-    <xacro:if value="$(arg is_ignition)">
-      <hardware>
-        <plugin>ign_ros2_control/IgnitionSystem</plugin>
-      </hardware>
-    </xacro:if>
+        <!-- Plugin do ROS 2 Control compatível com Gazebo -->
+        <!-- ROS 2 Humble usa ign_ros2_control -->
+        <xacro:if value="$(arg is_ignition)">
+            <hardware>
+                <plugin>ign_ros2_control/IgnitionSystem</plugin>
+            </hardware>
+        </xacro:if>
 
-    <xacro:unless value="$(arg is_ignition)">
-      <hardware>
-        <plugin>gz_ros2_control/GazeboSimSystem</plugin>
-      </hardware>
-    </xacro:unless>
+        <!-- ROS 2 Iron ou superior usa gz_ros2_control -->
+        <xacro:unless value="$(arg is_ignition)">
+            <hardware>
+                <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+            </hardware>
+        </xacro:unless>
 
-    <joint name="fl_wheel_joint">
-      <command_interface name="velocity"/>
-      <state_interface name="velocity"/>
-    </joint>
-    <joint name="fr_wheel_joint">
-      <command_interface name="velocity"/>
-      <state_interface name="velocity"/>
-    </joint>
-    <joint name="rl_wheel_joint">
-      <command_interface name="velocity"/>
-      <state_interface name="velocity"/>
-    </joint>
-    <joint name="rr_wheel_joint">
-      <command_interface name="velocity"/>
-      <state_interface name="velocity"/>
-    </joint>
+        <!-- Declaração dos joints com interface de velocidade -->
+        <joint name="fl_wheel_joint">
+            <command_interface name="velocity" />
+            <state_interface name="velocity" />
+        </joint>
 
-  </ros2_control>
+        <joint name="fr_wheel_joint">
+            <command_interface name="velocity" />
+            <state_interface name="velocity" />
+        </joint>
+
+        <joint name="rl_wheel_joint">
+            <command_interface name="velocity" />
+            <state_interface name="velocity" />
+        </joint>
+
+        <joint name="rr_wheel_joint">
+            <command_interface name="velocity" />
+            <state_interface name="velocity" />
+        </joint>
+
+    </ros2_control>
+
 </robot>

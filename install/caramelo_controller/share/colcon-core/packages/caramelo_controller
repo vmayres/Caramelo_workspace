@@ -1,1 +1,1 @@
-controller_manager:hardware_interface:joint_state_broadcaster:mecanum_drive_controller:rclpy:ros2_control:ros2_controllers:ros2launch
+controller_manager:joint_state_broadcaster:launch:launch_ros:mecanum_drive_controller:robot_state_publisher:xacro
