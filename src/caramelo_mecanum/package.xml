@@ -1,0 +1,16 @@
+<package format="3">
+  <name>caramelo_mecanum</name>
+  <version>0.0.1</version>
+  <description>Pacote de simulação para robô Mecanum com ROS 2 Humble e Gazebo Ignition</description>
+  <maintainer email="voce@exemplo.com">Você</maintainer>
+  <license>MIT</license>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>ros2_controllers</exec_depend>
+  <exec_depend>controller_manager</exec_depend>
+  <exec_depend>mecanum_drive_controller</exec_depend>
+  <exec_depend>gazebo_ros2_control</exec_depend>
+  <exec_depend>gazebo_ros_pkgs</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>nav_msgs</exec_depend>
+</package>

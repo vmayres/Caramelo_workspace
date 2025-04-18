@@ -4,58 +4,90 @@
   <!-- Friction direction and contact setup for mecanum wheels -->
   <gazebo reference="fl_wheel_link">
     <collision>
-      <surface>
-        <friction>
-          <ode>
-            <mu>1.0</mu>
-            <mu2>0</mu2>
-            <fdir1 gz:expressed_in="base_footprint">1 -1 0</fdir1>
-          </ode>
-        </friction>
-      </surface>
+      <geometry>
+        <sphere>
+          <radius>0.05</radius> <!-- Define the radius of the sphere -->
+        </sphere>
+      </geometry>
     </collision>
+    <visual>
+      <geometry>
+        <cylinder>
+          <radius>0.05</radius>
+          <length>0.1</length>
+        </cylinder>
+      </geometry>
+    </visual>
+    <mecanum_drive>
+      <roller_count>6</roller_count>
+      <roller_angle>45</roller_angle>
+    </mecanum_drive>
   </gazebo>
 
   <gazebo reference="fr_wheel_link">
     <collision>
-      <surface>
-        <friction>
-          <ode>
-            <mu>1.0</mu>
-            <mu2>0</mu2>
-            <fdir1 gz:expressed_in="base_footprint">1 1 0</fdir1>
-          </ode>
-        </friction>
-      </surface>
+      <geometry>
+        <sphere>
+          <radius>0.05</radius>
+        </sphere>
+      </geometry>
     </collision>
+    <visual>
+      <geometry>
+        <cylinder>
+          <radius>0.05</radius>
+          <length>0.1</length>
+        </cylinder>
+      </geometry>
+    </visual>
+    <mecanum_drive>
+      <roller_count>6</roller_count>
+      <roller_angle>45</roller_angle>
+    </mecanum_drive>
   </gazebo>
 
   <gazebo reference="rl_wheel_link">
     <collision>
-      <surface>
-        <friction>
-          <ode>
-            <mu>0</mu>
-            <mu2>0</mu2>
-            <fdir1 gz:expressed_in="base_footprint">1 1 0</fdir1>
-          </ode>
-        </friction>
-      </surface>
+      <geometry>
+        <sphere>
+          <radius>0.05</radius>
+        </sphere>
+      </geometry>
     </collision>
+    <visual>
+      <geometry>
+        <cylinder>
+          <radius>0.05</radius>
+          <length>0.1</length>
+        </cylinder>
+      </geometry>
+    </visual>
+    <mecanum_drive>
+      <roller_count>6</roller_count>
+      <roller_angle>45</roller_angle>
+    </mecanum_drive>
   </gazebo>
 
   <gazebo reference="rr_wheel_link">
     <collision>
-      <surface>
-        <friction>
-          <ode>
-            <mu>0</mu>
-            <mu2>0</mu2>
-            <fdir1 gz:expressed_in="base_footprint">1 -1 0</fdir1>
-          </ode>
-        </friction>
-      </surface>
+      <geometry>
+        <sphere>
+          <radius>0.05</radius>
+        </sphere>
+      </geometry>
     </collision>
+    <visual>
+      <geometry>
+        <cylinder>
+          <radius>0.05</radius>
+          <length>0.1</length>
+        </cylinder>
+      </geometry>
+    </visual>
+    <mecanum_drive>
+      <roller_count>6</roller_count>
+      <roller_angle>45</roller_angle>
+    </mecanum_drive>
   </gazebo>
 
   <!-- Plugin ROS 2 Control Gazebo -->
