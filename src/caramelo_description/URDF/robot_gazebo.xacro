@@ -1,45 +1,61 @@
 <?xml version="1.0"?>
-<robot name="caramelo" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot name="caramelo" xmlns:xacro="http://ros.org/wiki/xacro" xmlns:gz="http://gazebosim.org/schema">
 
-  <!-- Fricção nas rodas Mecanum -->
-  <gazebo reference="front_left_wheel">
-    <mu1>1000000.0</mu1>
-    <mu2>1000000.0</mu2>
-    <kp>1000000.0</kp>
-    <kd>10.0</kd>
-    <minDepth>0.001</minDepth>
-    <maxVel>0.1</maxVel>
-    <fdir1>1 0 0</fdir1>
+  <!-- Friction direction and contact setup for mecanum wheels -->
+  <gazebo reference="fl_wheel_link">
+    <collision>
+      <surface>
+        <friction>
+          <ode>
+            <mu>1.0</mu>
+            <mu2>0</mu2>
+            <fdir1 gz:expressed_in="base_footprint">1 -1 0</fdir1>
+          </ode>
+        </friction>
+      </surface>
+    </collision>
   </gazebo>
 
-  <gazebo reference="front_right_wheel">
-    <mu1>1000000.0</mu1>
-    <mu2>1000000.0</mu2>
-    <kp>1000000.0</kp>
-    <kd>10.0</kd>
-    <minDepth>0.001</minDepth>
-    <maxVel>0.1</maxVel>
-    <fdir1>1 0 0</fdir1>
+  <gazebo reference="fr_wheel_link">
+    <collision>
+      <surface>
+        <friction>
+          <ode>
+            <mu>1.0</mu>
+            <mu2>0</mu2>
+            <fdir1 gz:expressed_in="base_footprint">1 1 0</fdir1>
+          </ode>
+        </friction>
+      </surface>
+    </collision>
   </gazebo>
 
-  <gazebo reference="rear_left_wheel">
-    <mu1>1000000.0</mu1>
-    <mu2>1000000.0</mu2>
-    <kp>1000000.0</kp>
-    <kd>10.0</kd>
-    <minDepth>0.001</minDepth>
-    <maxVel>0.1</maxVel>
-    <fdir1>1 0 0</fdir1>
+  <gazebo reference="rl_wheel_link">
+    <collision>
+      <surface>
+        <friction>
+          <ode>
+            <mu>0</mu>
+            <mu2>0</mu2>
+            <fdir1 gz:expressed_in="base_footprint">1 1 0</fdir1>
+          </ode>
+        </friction>
+      </surface>
+    </collision>
   </gazebo>
 
-  <gazebo reference="rear_right_wheel">
-    <mu1>1000000.0</mu1>
-    <mu2>1000000.0</mu2>
-    <kp>1000000.0</kp>
-    <kd>10.0</kd>
-    <minDepth>0.001</minDepth>
-    <maxVel>0.1</maxVel>
-    <fdir1>1 0 0</fdir1>
+  <gazebo reference="rr_wheel_link">
+    <collision>
+      <surface>
+        <friction>
+          <ode>
+            <mu>0</mu>
+            <mu2>0</mu2>
+            <fdir1 gz:expressed_in="base_footprint">1 -1 0</fdir1>
+          </ode>
+        </friction>
+      </surface>
+    </collision>
   </gazebo>
 
   <!-- Plugin ROS 2 Control Gazebo -->
