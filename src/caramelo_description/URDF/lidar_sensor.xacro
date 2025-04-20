@@ -11,15 +11,22 @@
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <material name="red" />
       </visual>
+
       <collision>
         <geometry>
           <cylinder length="0.016" radius="0.030" />
         </geometry>
         <origin xyz="0 0 0" rpy="0 0 0"/>
       </collision>
-      <xacro:inertial_cylinder mass="0.1" length="0.016" radius="0.030">
-        <origin xyz="0 0 0" />
-      </xacro:inertial_cylinder>
+
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.1"/>
+        <inertia
+          ixx="1e-5" ixy="0.0" ixz="0.0"
+          iyy="1e-5" iyz="0.0"
+          izz="1e-5"/>
+      </inertial>
     </link>
 
     <joint name="laser_joint" type="fixed">
@@ -29,7 +36,6 @@
     </joint>
 
     <gazebo reference="laser_frame">
-      <material>Gazebo/Red</material>
       <sensor name="rplidar" type="ray">
         <pose>0 0 0 0 0 0</pose>
         <visualize>true</visualize>
@@ -47,9 +53,8 @@
             <max>20.0</max>
           </range>
         </ray>
-        <plugin name="laser_controller" filename="libgazebo_ros2_laser_sensor.so">
-          <ros_topic>/scan</ros_topic>
-          <output_type>sensor_msgs/LaserScan</output_type>
+        <plugin name="gazebo_ros_ray_sensor" filename="libignition-gazebo-ros-ray-system.so">
+          <topic>/scan</topic>
           <frame_name>laser_frame</frame_name>
         </plugin>
       </sensor>
