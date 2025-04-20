@@ -5,11 +5,11 @@
 /home/victor/Caramelo_workspace/install/caramelo_description/share/caramelo_description/launch/gazebo.launch.py
 /home/victor/Caramelo_workspace/install/caramelo_description/share/caramelo_description/launch/display.launch.py
 /home/victor/Caramelo_workspace/install/caramelo_description/share/caramelo_description/rviz/display.rviz
-/home/victor/Caramelo_workspace/install/caramelo_description/share/caramelo_description/URDF/inertial_macros.xacro
 /home/victor/Caramelo_workspace/install/caramelo_description/share/caramelo_description/URDF/robot_ros2_control.xacro
+/home/victor/Caramelo_workspace/install/caramelo_description/share/caramelo_description/URDF/robot_mecanum_wheel.xacro
 /home/victor/Caramelo_workspace/install/caramelo_description/share/caramelo_description/URDF/robot.urdf.xacro
-/home/victor/Caramelo_workspace/install/caramelo_description/share/caramelo_description/URDF/robot_core.xacro
-/home/victor/Caramelo_workspace/install/caramelo_description/share/caramelo_description/URDF/robot_gazebo.xacro
+/home/victor/Caramelo_workspace/install/caramelo_description/share/caramelo_description/URDF/robot_base.xacro
+/home/victor/Caramelo_workspace/install/caramelo_description/share/caramelo_description/URDF/lidar_sensor.xacro
 /home/victor/Caramelo_workspace/install/caramelo_description/lib/python3.10/site-packages/caramelo_description-0.0.1-py3.10.egg-info/requires.txt
 /home/victor/Caramelo_workspace/install/caramelo_description/lib/python3.10/site-packages/caramelo_description-0.0.1-py3.10.egg-info/entry_points.txt
 /home/victor/Caramelo_workspace/install/caramelo_description/lib/python3.10/site-packages/caramelo_description-0.0.1-py3.10.egg-info/PKG-INFO

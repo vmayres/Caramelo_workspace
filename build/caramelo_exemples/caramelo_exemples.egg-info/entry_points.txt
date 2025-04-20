@@ -1,3 +1,0 @@
-[console_scripts]
-simple_parameter = caramelo_exemples.simple_parameter:main
-

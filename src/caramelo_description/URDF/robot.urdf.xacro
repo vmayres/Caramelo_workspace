@@ -1,11 +1,45 @@
 <?xml version="1.0"?>
 <robot name="caramelo" xmlns:xacro="http://ros.org/wiki/xacro">
 
+  <!-- Argumento para Gazebo Ignition ou Gazebo Classic -->
   <xacro:arg name="is_ignition" default="true"/>
 
-  <xacro:include filename="robot_core.xacro" />
-  <xacro:include filename="robot_gazebo.xacro" />
+  <!-- Inclusões -->
+  <xacro:include filename="robot_base.xacro" />
+  <xacro:include filename="robot_mecanum_wheel.xacro" />
+  <xacro:include filename="lidar_sensor.xacro" />
   <xacro:include filename="robot_ros2_control.xacro" />
-  <xacro:include filename="inertial_macros.xacro" />
+
+  <!-- base_footprint -->
+  <link name="base_footprint"/>
+
+  <!-- Base -->
+  <xacro:robot_base parent="base_footprint"/>
+
+  <!-- Rodas mecanum -->
+  <xacro:mecanum_wheel prefix="" side="fl" x_reflect="1" y_reflect="1"/>
+  <xacro:mecanum_wheel prefix="" side="fr" x_reflect="1" y_reflect="-1"/>
+  <xacro:mecanum_wheel prefix="" side="rl" x_reflect="-1" y_reflect="1"/>
+  <xacro:mecanum_wheel prefix="" side="rr" x_reflect="-1" y_reflect="-1"/>
+
+  <!-- LiDAR -->
+  <xacro:lidar_sensor parent="base_link" xyz="0.273 0.012 0.07" rpy="0 0 0"/>
+
+  <!-- Plugin ROS 2 Control Gazebo -->
+  <gazebo>
+    <!-- ROS 2 Humble -->
+    <xacro:if value="$(arg is_ignition)">
+      <plugin filename="ign_ros2_control-system" name="ign_ros2_control::IgnitionROS2ControlPlugin">
+        <parameters>$(find caramelo_controller)/config/robot_controllers.yaml</parameters>
+      </plugin>
+    </xacro:if>
+
+    <!-- ROS 2 Iron ou superior -->
+    <xacro:unless value="$(arg is_ignition)">
+      <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+        <parameters>$(find caramelo_controller)/config/robot_controllers.yaml</parameters>
+      </plugin>
+    </xacro:unless>
+  </gazebo>
 
 </robot>

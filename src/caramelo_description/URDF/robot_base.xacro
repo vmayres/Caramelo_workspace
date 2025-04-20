@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="robot_base" params="parent">
+
+    <!-- Propriedades -->
+    <xacro:property name="mass" value="25.0"/>
+    <xacro:property name="width" value="0.545"/>
+    <xacro:property name="depth" value="0.225"/>
+    <xacro:property name="height" value="0.140"/>
+    <xacro:property name="wheel_radius" value="0.05"/>
+
+    <!-- Link da base (base_link agora toca o chão) -->
+    <link name="base_link">
+      <visual>
+        <origin xyz="0 0 ${height/2.0}" rpy="0 0 0"/>
+        <geometry>
+          <box size="${width} ${depth} ${height}"/>
+        </geometry>
+        <material name="black">
+          <color rgba="0.0 0.0 0.0 1.0"/>
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 ${height/2.0}" rpy="0 0 0"/>
+        <geometry>
+          <box size="${width} ${depth} ${height}"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="${mass}"/>
+        <origin xyz="0 0 ${height/2.0}" rpy="0 0 0"/>
+        <inertia
+          ixx="${1/12.0 * mass * (height*height + depth*depth)}"
+          iyy="${1/12.0 * mass * (width*width + depth*depth)}"
+          izz="${1/12.0 * mass * (width*width + height*height)}"
+          ixy="0.0" ixz="0.0" iyz="0.0"/>
+      </inertial>
+    </link>
+
+    <!-- Joint com o footprint (ajustado para elevar o base_link ao nível do solo) -->
+    <joint name="base_joint" type="fixed">
+      <parent link="${parent}"/>
+      <child link="base_link"/>
+      <origin xyz="0 0 ${wheel_radius - 0.02}" rpy="0 0 0"/>
+    </joint>
+
+    <!-- Aparência no Gazebo -->
+    <gazebo reference="base_link">
+      <visual>
+        <material>
+          <ambient>0.0 0.0 0.0 1.0</ambient>
+          <diffuse>0.0 0.0 0.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1 1.0</specular>
+          <emissive>0.0 0.0 0.0 1.0</emissive>
+        </material>
+      </visual>
+    </gazebo>
+
+  </xacro:macro>
+
+</robot>
