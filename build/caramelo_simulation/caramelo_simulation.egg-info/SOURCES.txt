@@ -4,7 +4,6 @@ setup.py
 ../../build/caramelo_simulation/caramelo_simulation.egg-info/PKG-INFO
 ../../build/caramelo_simulation/caramelo_simulation.egg-info/SOURCES.txt
 ../../build/caramelo_simulation/caramelo_simulation.egg-info/dependency_links.txt
-../../build/caramelo_simulation/caramelo_simulation.egg-info/entry_points.txt
 ../../build/caramelo_simulation/caramelo_simulation.egg-info/requires.txt
 ../../build/caramelo_simulation/caramelo_simulation.egg-info/top_level.txt
 ../../build/caramelo_simulation/caramelo_simulation.egg-info/zip-safe
@@ -22,8 +21,10 @@ description/robot_core.xacro
 launch/camera.launch..py
 launch/launch_sim.launch.py
 launch/launch_worldsim.launch.py
+launch/mecanum_simulation.launch.py
 launch/rplidar.launch.py
 launch/rsp.launch.py
+launch/spawn_robot.launch.py
 resource/caramelo_simulation
 worlds/empty.world
 worlds/obstracles.world

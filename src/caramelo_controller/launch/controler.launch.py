@@ -11,6 +11,8 @@ def generate_launch_description():
             "joint_state_broadcaster",
             "--controller-manager",
             "/controller_manager",
+            "--controller-manager-timeout",
+            "30"
         ],
         output="screen"
     )
@@ -21,9 +23,15 @@ def generate_launch_description():
         arguments=[
             "mecanum_controller",
             "--controller-manager",
-            "/controller_manager"
+            "/controller_manager",
+            "--controller-manager-timeout", 
+            "30"
         ],
-        output="screen"
+        output="screen",
+        remappings=[
+            ('/mecanum_controller/cmd_vel_unstamped', '/cmd_vel'),
+            ('/mecanum_controller/cmd_vel', '/cmd_vel')
+        ]
     )
 
     return LaunchDescription([

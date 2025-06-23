@@ -1,1 +1,1 @@
-ign_ros2_control:joint_state_publisher_gui:launch:launch_ros:rclpy:robot_state_publisher:ros_gz_sim:rviz2:urdf:xacro
+gz_ros2_control:joint_state_publisher_gui:launch:launch_ros:rclpy:robot_state_publisher:ros_gz_bridge:ros_gz_sim:rviz2:urdf:xacro

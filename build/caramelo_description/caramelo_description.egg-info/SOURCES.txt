@@ -4,7 +4,6 @@ setup.py
 ../../build/caramelo_description/caramelo_description.egg-info/PKG-INFO
 ../../build/caramelo_description/caramelo_description.egg-info/SOURCES.txt
 ../../build/caramelo_description/caramelo_description.egg-info/dependency_links.txt
-../../build/caramelo_description/caramelo_description.egg-info/entry_points.txt
 ../../build/caramelo_description/caramelo_description.egg-info/requires.txt
 ../../build/caramelo_description/caramelo_description.egg-info/top_level.txt
 ../../build/caramelo_description/caramelo_description.egg-info/zip-safe
@@ -16,5 +15,6 @@ URDF/robot_ros2_control.xacro
 caramelo_description/__init__.py
 launch/display.launch.py
 launch/gazebo.launch.py
+launch/robot_complete.launch.py
 resource/caramelo_description
 rviz/display.rviz

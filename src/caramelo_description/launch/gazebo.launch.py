@@ -14,8 +14,8 @@ from launch_ros.parameter_descriptions import ParameterValue
 def generate_launch_description():
     caramelo_description = get_package_share_directory("caramelo_description")
 
-    ros_distro = os.environ["ROS_DISTRO"]
-    is_ignition = "True" if ros_distro == "humble" else "False"
+    # Para ROS2 Jazzy sempre usar Gazebo Harmonic
+    is_ignition = "False"
 
     model_arg = DeclareLaunchArgument(
         name="model",

@@ -1,6 +1,13 @@
 <?xml version="1.0"?>
 <robot name="caramelo" xmlns:xacro="http://ros.org/wiki/xacro">
 
+  <!-- Propriedades -->
+  <xacro:property name="M_PI" value="3.1415926535897931" />
+
+  <!-- Argumentos -->
+  <xacro:arg name="robot_name" default="caramelo"/>
+  <xacro:arg name="prefix" default=""/>
+
   <!-- Argumento para Gazebo Ignition ou Gazebo Classic -->
   <xacro:arg name="is_ignition" default="true"/>
 
@@ -17,29 +24,40 @@
   <xacro:robot_base parent="base_footprint"/>
 
   <!-- Rodas mecanum -->
-  <xacro:mecanum_wheel prefix="" side="fl" x_reflect="1" y_reflect="1"/>
-  <xacro:mecanum_wheel prefix="" side="fr" x_reflect="1" y_reflect="-1"/>
-  <xacro:mecanum_wheel prefix="" side="rl" x_reflect="-1" y_reflect="1"/>
-  <xacro:mecanum_wheel prefix="" side="rr" x_reflect="-1" y_reflect="-1"/>
+  <xacro:mecanum_wheel
+    prefix="$(arg prefix)"
+    side="front_left"
+    x_reflect="1"
+    y_reflect="1"/>
+
+  <xacro:mecanum_wheel
+    prefix="$(arg prefix)"
+    side="front_right"
+    x_reflect="1"
+    y_reflect="-1"/>
+
+  <xacro:mecanum_wheel
+    prefix="$(arg prefix)"
+    side="back_left"
+    x_reflect="-1"
+    y_reflect="1"/>
+
+  <xacro:mecanum_wheel
+    prefix="$(arg prefix)"
+    side="back_right"
+    x_reflect="-1"
+    y_reflect="-1"/>
 
   <!-- LiDAR -->
   <xacro:lidar_sensor parent="base_link" xyz="0.273 0.012 0.07" rpy="0 0 0"/>
 
   <!-- Plugin ROS 2 Control Gazebo -->
   <gazebo>
-    <!-- ROS 2 Humble -->
-    <xacro:if value="$(arg is_ignition)">
-      <plugin filename="ign_ros2_control-system" name="ign_ros2_control::IgnitionROS2ControlPlugin">
-        <parameters>$(find caramelo_controller)/config/robot_controllers.yaml</parameters>
-      </plugin>
-    </xacro:if>
-
-    <!-- ROS 2 Iron ou superior -->
-    <xacro:unless value="$(arg is_ignition)">
-      <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
-        <parameters>$(find caramelo_controller)/config/robot_controllers.yaml</parameters>
-      </plugin>
-    </xacro:unless>
+    <!-- ROS 2 Jazzy com Gazebo Harmonic -->
+    <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+      <parameters>$(find caramelo_controller)/config/robot_controllers.yaml</parameters>
+      <controller_manager_node_name>controller_manager</controller_manager_node_name>
+    </plugin>
   </gazebo>
 
 </robot>
