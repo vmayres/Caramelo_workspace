@@ -3,8 +3,6 @@
 /home/linux24-04/Caramelo_workspace/install/caramelo_description/share/ament_index/resource_index/packages/caramelo_description
 /home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/package.xml
 /home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/launch/gazebo.launch.py
-/home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/launch/caramelo_gazebo.launch.py
-/home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/launch/youbot_gazebo.launch.py
 /home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/launch/display.launch.py
 /home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/rviz/caramelo.rviz
 /home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/rviz/display.rviz
@@ -13,42 +11,7 @@
 /home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/URDF/robot.urdf.xacro
 /home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/URDF/lidar_sensor.xacro
 /home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/URDF/robot_mecanum_wheel.xacro
-/home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/worlds/youbot_world.sdf
-/home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/Kuka YouBot/model.config
-/home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/Kuka YouBot/model-1_3.sdf
-/home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/Kuka YouBot/model.sdf
-/home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/Kuka YouBot/model-1_4.sdf
-/home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/Kuka YouBot/model-1_2.sdf
-/home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/Kuka YouBot/materials/scripts/youbot.material
-/home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/Kuka YouBot/meshes/plate/plate_convex.stl
-/home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/Kuka YouBot/meshes/plate/plate.dae
-/home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/Kuka YouBot/meshes/base/back-left_wheel.dae
-/home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/Kuka YouBot/meshes/base/back-right_wheel.dae
-/home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/Kuka YouBot/meshes/base/front-left_wheel.dae
-/home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/Kuka YouBot/meshes/base/front-right_wheel.dae
-/home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/Kuka YouBot/meshes/base/base.dae
-/home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/Kuka YouBot/meshes/base/base_convex.stl
-/home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/Kuka YouBot/meshes/arm/arm1.dae
-/home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/Kuka YouBot/meshes/arm/arm5_convex.stl
-/home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/Kuka YouBot/meshes/arm/arm2_convex.stl
-/home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/Kuka YouBot/meshes/arm/arm2.dae
-/home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/Kuka YouBot/meshes/arm/arm1_convex.stl
-/home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/Kuka YouBot/meshes/arm/arm4.dae
-/home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/Kuka YouBot/meshes/arm/arm4_convex.stl
-/home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/Kuka YouBot/meshes/arm/arm0_convex.stl
-/home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/Kuka YouBot/meshes/arm/arm3.dae
-/home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/Kuka YouBot/meshes/arm/arm0.dae
-/home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/Kuka YouBot/meshes/arm/arm3_convex.stl
-/home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/Kuka YouBot/meshes/arm/arm5.dae
-/home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/Kuka YouBot/meshes/gripper/finger_convex.stl
-/home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/Kuka YouBot/meshes/gripper/finger.stl
-/home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/Kuka YouBot/meshes/gripper/palm_convex.stl
-/home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/Kuka YouBot/meshes/gripper/palm.stl
-/home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/Kuka YouBot/thumbnails/5.png
-/home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/Kuka YouBot/thumbnails/1.png
-/home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/Kuka YouBot/thumbnails/4.png
-/home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/Kuka YouBot/thumbnails/3.png
-/home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/Kuka YouBot/thumbnails/2.png
+/home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/worlds
 /home/linux24-04/Caramelo_workspace/install/caramelo_description/lib/python3.12/site-packages/caramelo_description-0.0.1-py3.12.egg-info/requires.txt
 /home/linux24-04/Caramelo_workspace/install/caramelo_description/lib/python3.12/site-packages/caramelo_description-0.0.1-py3.12.egg-info/PKG-INFO
 /home/linux24-04/Caramelo_workspace/install/caramelo_description/lib/python3.12/site-packages/caramelo_description-0.0.1-py3.12.egg-info/SOURCES.txt

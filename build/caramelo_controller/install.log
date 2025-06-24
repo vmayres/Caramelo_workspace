@@ -3,7 +3,6 @@
 /home/linux24-04/Caramelo_workspace/install/caramelo_controller/share/ament_index/resource_index/packages/caramelo_controller
 /home/linux24-04/Caramelo_workspace/install/caramelo_controller/share/caramelo_controller/package.xml
 /home/linux24-04/Caramelo_workspace/install/caramelo_controller/share/caramelo_controller/config/robot_controllers.yaml
-/home/linux24-04/Caramelo_workspace/install/caramelo_controller/share/caramelo_controller/launch/load_ros2_controllers.launch.py
 /home/linux24-04/Caramelo_workspace/install/caramelo_controller/share/caramelo_controller/launch/controler.launch.py
 /home/linux24-04/Caramelo_workspace/install/caramelo_controller/lib/python3.12/site-packages/caramelo_controller-0.0.0-py3.12.egg-info/requires.txt
 /home/linux24-04/Caramelo_workspace/install/caramelo_controller/lib/python3.12/site-packages/caramelo_controller-0.0.0-py3.12.egg-info/PKG-INFO
