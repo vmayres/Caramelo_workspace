@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="caramelo">
 
+    <!-- ros2_control configuration for Caramelo mecanum drive robot -->
     <ros2_control name="RobotSystem" type="system">
 
         <!-- Plugin do ROS 2 Control compatível com Gazebo Harmonic -->
@@ -8,7 +9,7 @@
             <plugin>gz_ros2_control/GazeboSimSystem</plugin>
         </hardware>
 
-        <!-- Declaração dos joints com interface de velocidade -->
+        <!-- Front Left Wheel Joint -->
         <joint name="front_left_wheel_joint">
             <command_interface name="velocity">
                 <param name="min">-50.0</param>
@@ -18,6 +19,7 @@
             <state_interface name="velocity"/>
         </joint>
 
+        <!-- Front Right Wheel Joint -->
         <joint name="front_right_wheel_joint">
             <command_interface name="velocity">
                 <param name="min">-50.0</param>
@@ -27,6 +29,7 @@
             <state_interface name="velocity"/>
         </joint>
 
+        <!-- Back Left Wheel Joint -->
         <joint name="back_left_wheel_joint">
             <command_interface name="velocity">
                 <param name="min">-50.0</param>
@@ -36,6 +39,7 @@
             <state_interface name="velocity"/>
         </joint>
 
+        <!-- Back Right Wheel Joint -->
         <joint name="back_right_wheel_joint">
             <command_interface name="velocity">
                 <param name="min">-50.0</param>
@@ -46,5 +50,16 @@
         </joint>
 
     </ros2_control>
+
+    <!-- Plugin para Gazebo Harmonic carregar os controladores -->
+    <gazebo>
+        <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+            <parameters>$(find caramelo_controller)/config/robot_controllers.yaml</parameters>
+            <controller_manager_node_name>controller_manager</controller_manager_node_name>
+            <ros>
+                <remapping>/controller_manager/robot_description:=/robot_description</remapping>
+            </ros>
+        </plugin>
+    </gazebo>
 
 </robot>

@@ -7,14 +7,52 @@ setup.py
 ../../build/caramelo_description/caramelo_description.egg-info/requires.txt
 ../../build/caramelo_description/caramelo_description.egg-info/top_level.txt
 ../../build/caramelo_description/caramelo_description.egg-info/zip-safe
+Kuka YouBot/model-1_2.sdf
+Kuka YouBot/model-1_3.sdf
+Kuka YouBot/model-1_4.sdf
+Kuka YouBot/model.config
+Kuka YouBot/model.sdf
+Kuka YouBot/materials/scripts/youbot.material
+Kuka YouBot/meshes/arm/arm0.dae
+Kuka YouBot/meshes/arm/arm0_convex.stl
+Kuka YouBot/meshes/arm/arm1.dae
+Kuka YouBot/meshes/arm/arm1_convex.stl
+Kuka YouBot/meshes/arm/arm2.dae
+Kuka YouBot/meshes/arm/arm2_convex.stl
+Kuka YouBot/meshes/arm/arm3.dae
+Kuka YouBot/meshes/arm/arm3_convex.stl
+Kuka YouBot/meshes/arm/arm4.dae
+Kuka YouBot/meshes/arm/arm4_convex.stl
+Kuka YouBot/meshes/arm/arm5.dae
+Kuka YouBot/meshes/arm/arm5_convex.stl
+Kuka YouBot/meshes/base/back-left_wheel.dae
+Kuka YouBot/meshes/base/back-right_wheel.dae
+Kuka YouBot/meshes/base/base.dae
+Kuka YouBot/meshes/base/base_convex.stl
+Kuka YouBot/meshes/base/front-left_wheel.dae
+Kuka YouBot/meshes/base/front-right_wheel.dae
+Kuka YouBot/meshes/gripper/finger.stl
+Kuka YouBot/meshes/gripper/finger_convex.stl
+Kuka YouBot/meshes/gripper/palm.stl
+Kuka YouBot/meshes/gripper/palm_convex.stl
+Kuka YouBot/meshes/plate/plate.dae
+Kuka YouBot/meshes/plate/plate_convex.stl
+Kuka YouBot/thumbnails/1.png
+Kuka YouBot/thumbnails/2.png
+Kuka YouBot/thumbnails/3.png
+Kuka YouBot/thumbnails/4.png
+Kuka YouBot/thumbnails/5.png
 URDF/lidar_sensor.xacro
 URDF/robot.urdf.xacro
 URDF/robot_base.xacro
 URDF/robot_mecanum_wheel.xacro
 URDF/robot_ros2_control.xacro
 caramelo_description/__init__.py
+launch/caramelo_gazebo.launch.py
 launch/display.launch.py
 launch/gazebo.launch.py
-launch/robot_complete.launch.py
+launch/youbot_gazebo.launch.py
 resource/caramelo_description
+rviz/caramelo.rviz
 rviz/display.rviz
+worlds/youbot_world.sdf

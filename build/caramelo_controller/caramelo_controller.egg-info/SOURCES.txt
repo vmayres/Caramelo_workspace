@@ -10,4 +10,5 @@ setup.py
 caramelo_controller/__init__.py
 config/robot_controllers.yaml
 launch/controler.launch.py
+launch/load_ros2_controllers.launch.py
 resource/caramelo_controller

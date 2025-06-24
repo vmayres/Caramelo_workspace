@@ -1,6 +1,11 @@
+source;share/caramelo_simulation/hook/cmake_prefix_path.ps1
+source;share/caramelo_simulation/hook/cmake_prefix_path.dsv
+source;share/caramelo_simulation/hook/cmake_prefix_path.sh
 source;share/caramelo_simulation/hook/pythonpath.ps1
 source;share/caramelo_simulation/hook/pythonpath.dsv
 source;share/caramelo_simulation/hook/pythonpath.sh
-source;share/caramelo_simulation/hook/ament_prefix_path.ps1
-source;share/caramelo_simulation/hook/ament_prefix_path.dsv
-source;share/caramelo_simulation/hook/ament_prefix_path.sh
+source;share/caramelo_simulation/local_setup.bash
+source;share/caramelo_simulation/local_setup.dsv
+source;share/caramelo_simulation/local_setup.ps1
+source;share/caramelo_simulation/local_setup.sh
+source;share/caramelo_simulation/local_setup.zsh

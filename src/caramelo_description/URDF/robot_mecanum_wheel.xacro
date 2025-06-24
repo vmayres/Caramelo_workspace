@@ -1,25 +1,27 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
+  <!-- Especificações das rodas mecanum do robô Caramelo -->
   <xacro:property name="wheel_radius" value="0.05" />
-  <xacro:property name="wheel_width" value="0.075" />
-  <xacro:property name="wheel_mass" value="1.5" />
-  <xacro:property name="wheel_separation" value="0.305" />
-  <xacro:property name="wheel_xoff" value="0.228" />
-  <xacro:property name="wheel_yoff" value="0.0" />
+  <xacro:property name="wheel_width" value="0.061" />
+  <xacro:property name="wheel_mass" value="3.0" />
+  <xacro:property name="wheel_separation" value="0.370" />
+  <xacro:property name="wheel_base" value="0.470" />
 
   <xacro:macro name="mecanum_wheel" params="prefix side x_reflect y_reflect">
     <link name="${prefix}${side}_wheel_link">
+      <!-- Geometria visual: roda como cilindro -->
       <visual>
-        <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
           <cylinder radius="${wheel_radius}" length="${wheel_width}"/>
         </geometry>
-        <material name="orange">
-          <color rgba="1.0 0.4 0.0 1.0"/>
+        <material name="wheel_material">
+          <color rgba="0.8 0.8 0.0 1.0"/>
         </material>
       </visual>
 
+      <!-- Geometria de colisão: cilindro simples para otimização de performance -->
       <collision>
         <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
         <geometry>
@@ -27,6 +29,7 @@
         </geometry>
       </collision>
 
+      <!-- Propriedades inerciais baseadas no cilindro -->
       <inertial>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <mass value="${wheel_mass}"/>
@@ -37,31 +40,21 @@
       </inertial>
     </link>
 
+    <!-- Joint da roda: rotação contínua em torno do eixo Y -->
     <joint name="${prefix}${side}_wheel_joint" type="continuous">
       <axis xyz="0 1 0"/>
       <parent link="${prefix}base_link"/>
       <child link="${prefix}${side}_wheel_link"/>
-      <origin xyz="${x_reflect*0.237} ${y_reflect*0.150} 0.02" rpy="0 0 0"/>
+      <origin xyz="${x_reflect*(wheel_base/2)} ${y_reflect*(wheel_separation/2)} 0" rpy="0 0 0"/>
     </joint>
 
+    <!-- Configurações específicas do Gazebo para as rodas mecanum -->
     <gazebo reference="${prefix}${side}_wheel_link">
-      <surface>
-        <friction>
-          <ode>
-              <mu>1.0</mu>
-              <mu2>1.0</mu2>
-          </ode>
-        </friction>
-      </surface>
-      <visual>
-          <material>
-              <ambient>0.2 0.2 0.2 1.0</ambient>
-              <diffuse>0.2 0.2 0.2 1.0</diffuse>
-              <specular>0.2 0.2 0.2 1.0</specular>
-              <emissive>0.0 0.0 0.0 0.0</emissive>
-          </material>
-      </visual>
-  </gazebo>
+      <material>Gazebo/DarkGrey</material>
+      <!-- Propriedades de fricção básicas - configuração simplificada -->
+      <mu1>1.0</mu1>
+      <mu2>1.0</mu2>
+    </gazebo>
 
   </xacro:macro>
 </robot>

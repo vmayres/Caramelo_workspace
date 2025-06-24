@@ -17,11 +17,11 @@ def generate_launch_description():
         output="screen"
     )
 
-    mecanum_controller_spawner = Node(
+    mecanum_drive_controller_spawner = Node(
         package="controller_manager",
         executable="spawner",
         arguments=[
-            "mecanum_controller",
+            "mecanum_drive_controller",
             "--controller-manager",
             "/controller_manager",
             "--controller-manager-timeout", 
@@ -29,12 +29,12 @@ def generate_launch_description():
         ],
         output="screen",
         remappings=[
-            ('/mecanum_controller/cmd_vel_unstamped', '/cmd_vel'),
-            ('/mecanum_controller/cmd_vel', '/cmd_vel')
+            ('/mecanum_drive_controller/cmd_vel_unstamped', '/cmd_vel'),
+            ('/mecanum_drive_controller/cmd_vel', '/cmd_vel')
         ]
     )
 
     return LaunchDescription([
         joint_state_broadcaster_spawner,
-        mecanum_controller_spawner,
+        mecanum_drive_controller_spawner,
     ])

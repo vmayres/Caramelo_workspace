@@ -3,11 +3,11 @@
 
   <xacro:macro name="robot_base" params="parent">
 
-    <!-- Propriedades -->
-    <xacro:property name="mass" value="25.0"/>
-    <xacro:property name="width" value="0.545"/>
-    <xacro:property name="depth" value="0.225"/>
-    <xacro:property name="height" value="0.140"/>
+    <!-- Propriedades da base do robô Caramelo -->
+    <xacro:property name="mass" value="22.0"/>
+    <xacro:property name="width" value="0.580"/>   <!-- Comprimento -->
+    <xacro:property name="depth" value="0.380"/>   <!-- Largura -->
+    <xacro:property name="height" value="0.105"/>  <!-- Altura -->
     <xacro:property name="wheel_radius" value="0.05"/>
 
     <!-- Link da base (base_link agora toca o chão) -->
@@ -38,11 +38,11 @@
       </inertial>
     </link>
 
-    <!-- Joint com o footprint (ajustado para elevar o base_link ao nível do solo) -->
+    <!-- Joint com o footprint (ajustado para as dimensões do Caramelo) -->
     <joint name="base_joint" type="fixed">
       <parent link="${parent}"/>
       <child link="base_link"/>
-      <origin xyz="0 0 ${wheel_radius - 0.02}" rpy="0 0 0"/>
+      <origin xyz="0 0 ${wheel_radius - 0.01}" rpy="0 0 0"/>
     </joint>
 
     <!-- Aparência no Gazebo -->
