@@ -19,6 +19,7 @@
 #include "rclcpp/logging.hpp"
 #include "tf2/LinearMath/Quaternion.h"
 #include "geometry_msgs/msg/transform_stamped.hpp"
+#include "std_msgs/msg/float64_multi_array.hpp"
 
 namespace mecanum_drive_controller
 {
@@ -116,6 +117,13 @@ controller_interface::CallbackReturn MecanumDriveController::on_configure(
   realtime_odometry_publisher_ = 
     std::make_shared<realtime_tools::RealtimePublisher<nav_msgs::msg::Odometry>>(
       odometry_publisher_);
+
+  // Create wheel commands publisher
+  wheel_commands_publisher_ = get_node()->create_publisher<std_msgs::msg::Float64MultiArray>(
+    "/mecanum_controller/commands", rclcpp::SystemDefaultsQoS());
+  realtime_wheel_commands_publisher_ = 
+    std::make_shared<realtime_tools::RealtimePublisher<std_msgs::msg::Float64MultiArray>>(
+      wheel_commands_publisher_);
 
   RCLCPP_INFO(get_node()->get_logger(), "Mecanum drive controller configured successfully");
   return controller_interface::CallbackReturn::SUCCESS;
@@ -237,6 +245,19 @@ controller_interface::return_type MecanumDriveController::update(
   const double front_right_vel = (vx + vy + vtheta * (wheel_base_half + wheel_separation_half)) / wheel_radius;
   const double back_left_vel = (vx + vy - vtheta * (wheel_base_half + wheel_separation_half)) / wheel_radius;
   const double back_right_vel = (vx - vy + vtheta * (wheel_base_half + wheel_separation_half)) / wheel_radius;
+
+  // Publish wheel commands for external hardware interface
+  if (realtime_wheel_commands_publisher_->trylock())
+  {
+    auto & wheel_commands_msg = realtime_wheel_commands_publisher_->msg_;
+    wheel_commands_msg.data.clear();
+    wheel_commands_msg.data.resize(4);
+    wheel_commands_msg.data[0] = front_left_vel;   // front_left_wheel
+    wheel_commands_msg.data[1] = front_right_vel;  // front_right_wheel
+    wheel_commands_msg.data[2] = back_left_vel;    // rear_left_wheel (back_left)
+    wheel_commands_msg.data[3] = back_right_vel;   // rear_right_wheel (back_right)
+    realtime_wheel_commands_publisher_->unlockAndPublish();
+  }
 
   // Assign velocities to wheels
   command_interfaces_[0].set_value(front_left_vel);

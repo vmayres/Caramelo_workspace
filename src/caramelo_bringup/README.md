@@ -1,147 +1,239 @@
-# caramelo_bringup
+# Caramelo Bringup - Sistema Completo de Controle
 
-Pacote ROS 2 para integração do robô real Caramelo com ESP32 via serial, usando rodas mecanum e controle por PWM.
+Sistema ROS 2 completo para controle do robô Caramelo com rodas mecanum, incluindo:
+- 🤖 Controle de hardware via 2 ESP32s (PWM para motores + Encoders para odometria)
+- 🎮 Controle via teclado (teleop) 
+- 📊 Visualização em RViz
+- ⚙️ Controllers para navegação mecanum
 
-## Objetivo
+## 🚀 Quick Start - Como Ligar o Robô
 
-- Receber comandos de velocidade (Twist) do ROS 2.
-- Usar o plugin mecanum_drive_controller do ROS 2 Control para gerar comandos de roda.
-- Converter comandos de roda em PWM e enviar via serial para a ESP32.
-- (Opcional) Visualizar o robô no RViz.
+### 1. 🔌 Conectar Hardware
+- **ESP32 #1 (Encoders):** Conectar **OBRIGATORIAMENTE** em `/dev/ttyUSB1`
+- **ESP32 #2 (PWM/Motores):** Conectar preferencialmente em `/dev/ttyUSB0`
+- Verificar portas: `ls /dev/ttyUSB*`
 
-## Passo a passo para testar o sistema completo
-
-### 1. Grave o código na ESP32
-
-- Use o Arduino IDE para gravar o arquivo `ESP32_PWM_writer.ino` (disponível neste pacote) na sua ESP32 responsável pelo controle dos motores.
-- Ajuste os pinos se necessário conforme seu hardware.
-
-### 2. Conecte a ESP32 ao PC via USB
-
-- Verifique qual porta serial foi atribuída (exemplo: `/dev/ttyUSB0`).
-
-### 3. Compile e instale o pacote ROS 2
-
+### 2. ⚡ Configurar Permissões
 ```bash
-cd /path/to/Caramelo_workspace
-colcon build --packages-select caramelo_bringup
+sudo chmod 777 /dev/ttyUSB0 /dev/ttyUSB1 /dev/ttyUSB2 /dev/ttyUSB3
+```
+
+### 3. 🔧 Compilar Workspace (primeira vez)
+```bash
+cd ~/Caramelo_workspace
+colcon build
 source install/setup.bash
 ```
 
-### 4. Inicie o sistema de controle e comunicação com um único comando
+### 4. 🎯 Ligar Sistema (2 Terminais Separados) (ctrl + shift + E//O)
 
+**Terminal 1 - ESP32 dos Encoders:**
 ```bash
-ros2 launch caramelo_bringup bringup_with_control.launch.py
-```
-
-- Isso já inicializa o controller mecanum e o nó de hardware interface para enviar PWM para a ESP32.
-- Certifique-se de que o nó está usando a porta serial correta (`/dev/ttyUSB0`).
-- O nó irá receber comandos do controller e enviar PWM para a ESP32.
-- **O nó também publica valores simulados em `/joint_states` apenas para visualização no RViz. Estes NÃO são valores reais de encoder!**
-
-### 5. (Opcional) Visualize o robô no RViz
-
-```bash
-ros2 launch caramelo_bringup view_robot_rviz.launch.py
-```
-
-### 6. Envie comandos de velocidade para o robô
-
-- Em outro terminal, envie comandos de velocidade para `/cmd_vel`:
-
-```bash
-ros2 topic pub /cmd_vel geometry_msgs/msg/Twist '{linear: {x: 0.2, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0.1}}'
-```
-
-- O mecanum_drive_controller irá converter para comandos de roda, o nó Python converte para PWM e a ESP32 aplica nos motores.
-
----
-
-## Estrutura dos arquivos
-
-- `caramelo_hw_interface_node.py`: Nó para integração com o mecanum_drive_controller. Recebe comandos de velocidade das rodas do controller e envia PWM para ESP32. **Publica valores simulados em `/joint_states` apenas para visualização.**
-- `launch/bringup_hw_interface.launch.py`: Lança o nó de hardware interface para integração com ROS 2 Control.
-- `launch/view_robot_rviz.launch.py`: Abre o RViz para visualizar o robô e tópicos.
-
-## Como usar
-
-### 1. Compilar o pacote
-```bash
-cd /path/to/Caramelo_workspace
-colcon build --packages-select caramelo_bringup
+cd ~/Caramelo_workspace
 source install/setup.bash
+ros2 launch caramelo_bringup bringup_encoder.launch.py
 ```
+*Aguarde até ver: "ESP32 encoders reiniciada com sucesso"*
 
-### 2. Usar com mecanum_drive_controller (recomendado para controle avançado)
-- Certifique-se de ter o mecanum_drive_controller instalado e configurado no seu sistema.
-- Rode o controller normalmente (exemplo):
-  ```bash
-  ros2 launch caramelo_controller controler.launch.py
-  ```
-- Em outro terminal, rode o nó de hardware interface:
-  ```bash
-  ros2 launch caramelo_bringup bringup_hw_interface.launch.py
-  ```
-- Publique comandos de velocidade em `/cmd_vel` (Twist). O mecanum_drive_controller converte para comandos de roda, e o nó envia PWM para a ESP32.
-
-### 3. Visualizar no RViz
+**Terminal 2 - ESP32 dos PWMs:**
 ```bash
-ros2 launch caramelo_bringup view_robot_rviz.launch.py
+cd ~/Caramelo_workspace
+source install/setup.bash
+ros2 launch caramelo_bringup bringup_pwm.launch.py
 ```
 
-## Explicação dos códigos
-
-### caramelo_pwm_serial_node.py
-- **Assina**: `/caramelo_cmd_vel` (Twist)
-- **Cálculo**: Usa cinemática inversa mecanum para obter velocidade de cada roda.
-- **Conversão**: Transforma velocidade angular de cada roda em PWM (ajuste constante `k_pwm` conforme necessário).
-- **Envio**: Monta um JSON com os PWMs e envia via serial para a ESP32.
-
-### caramelo_hw_interface_node.py
-- **Assina**: `/mecanum_controller/commands` (Float64MultiArray, ordem: FL, FR, RL, RR)
-- **Conversão**: Transforma velocidade angular de cada roda em PWM (ajuste constante `k_pwm` conforme necessário).
-- **Envio**: Monta um JSON com os PWMs e envia via serial para a ESP32.
-- **Fácil de expandir**: No futuro pode ler encoders e publicar `/joint_states`.
-
-### Integração com ROS 2 Control
-- O mecanum_drive_controller faz toda a lógica de cinemática e controle.
-- O nó de hardware interface só converte comandos de roda para PWM.
-- Isso facilita a implementação de controle em malha fechada no futuro.
-
-### view_robot_rviz.launch.py
-- Abre o RViz para visualizar o robô.
-- Publica um static_transform se necessário para visualizar corretamente o modelo.
-
-## Leitura dos encoders para controle fechado
-
-- O robô possui uma segunda ESP32 dedicada à leitura dos encoders das rodas.
-- O código `esp32_encoder_reader.ino` (no pacote) lê os encoders e envia via serial (USB) um JSON com as contagens de cada roda:
-  ```json
-  {"enc_fl": 12345, "enc_fr": 12340, "enc_rl": 12350, "enc_rr": 12347}
-  ```
-- No ROS, o nó `encoder_joint_state_node.py` lê esses valores, converte para posição/velocidade e publica em `/joint_states`.
-- Use o launch:
-  ```bash
-  ros2 launch caramelo_bringup encoder_joint_state.launch.py
-  ```
-- Assim, o `joint_state_broadcaster` e o `mecanum_drive_controller` podem operar em malha fechada.
-
-#### Vantagem desse fluxo
-- Toda a lógica de cálculo, calibração e filtragem pode ser feita no ROS.
-- O código da ESP32 fica simples e fácil de manter.
-- O sistema fica flexível para upgrades e debug.
-
-## Fluxo de dados
-
+### 5. 🎮 Controlar Robô (Terminal 3) (ctrl + shift + E//O)
+```bash
+cd ~/Caramelo_workspace
+source install/setup.bash
+ros2 launch caramelo_bringup teleop_keyboard.launch.py
 ```
-[ROS2 Topic /cmd_vel] --Twist--> [mecanum_drive_controller] --Float64MultiArray--> [caramelo_hw_interface_node.py] --PWM JSON via Serial--> [ESP32] --Motores-->
+*Este comando inicia automaticamente o conversor Twist→TwistStamped e o controle via teclado*
+
+**Teclas de Controle:**
+- **U/I**: Frente/Trás
+- **O/J**: Direita/Esquerda  
+- **K/L**: Rotar Esquerda/Direita
+- **M**: PARAR
+- **N/<**: Aumentar/Diminuir velocidade
+
+## ✅ Verificar se Sistema está Funcionando
+
+```bash
+# 1. Verificar nós ativos
+ros2 node list | grep -E "(controller_manager|caramelo|encoder)"
+
+# 2. Verificar tópicos de controle
+ros2 topic list | grep mecanum_drive_controller
+
+# 3. Verificar controladores
+ros2 control list_controllers
+
+# 4. Teste rápido de movimento
+ros2 topic pub --once /mecanum_drive_controller/cmd_vel geometry_msgs/msg/Twist "{linear: {x: 0.1, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0.0}}"
 ```
 
-## Observações
-- **Os valores publicados em `/joint_states` são simulados, apenas para visualização no RViz. Não são valores reais de encoder!**
-- O nó pode ser facilmente adaptado para receber feedback real no futuro.
-- Ajuste os parâmetros de PWM conforme o seu hardware.
+**✅ Sistema OK se:**
+- Aparece `/controller_manager` e `/caramelo_hw_interface_node`
+- Aparece `/mecanum_drive_controller/cmd_vel` no topic list
+- Controllers aparecem como "active"
+- Robô se move com comando de teste
 
-## Manutenção
-- Victor Oliveira Ayres
-- victoroliveiraayres@gmail.com
+## 📡 Especificações do Hardware
+
+### ESP32 #1 - Leitura de Encoders
+- **Porta:** `/dev/ttyUSB1` (EXCLUSIVA)
+- **Baudrate:** 115200
+- **Função:** Lê encoders e envia contagens via JSON
+- **Formato:** `{"enc_fl": 1234, "enc_fr": 5678, "enc_rl": 9012, "enc_rr": 3456}`
+
+### ESP32 #2 - Controle de Motores  
+- **Porta:** `/dev/ttyUSB0` (preferencial) ou `/dev/ttyUSB2`, `/dev/ttyUSB3`
+- **Baudrate:** 9600
+- **Função:** Recebe comandos PWM e controla motores
+- **Formato:** `{"pwm_fl": 512, "pwm_fr": 512, "pwm_rl": 512, "pwm_rr": 512}`
+
+### Parâmetros do Robô
+- **Raio das rodas:** 5 cm
+- **Distância entre eixos:** 47 cm  
+- **Distância entre rodas:** 31,5 cm
+- **Encoders:** 114,688 pulsos/revolução (motor)
+- **PWM:** 0-1023 (512 = parado, <512 = frente, >512 = trás)
+- **Motores FR e RR:** Invertidos fisicamente (código compensa automaticamente)
+
+## 🐛 Solução de Problemas
+
+### Problema: ESP32 não conecta
+```bash
+# Verificar dispositivos USB
+ls -la /dev/ttyUSB*
+
+# Verificar comunicação
+sudo screen /dev/ttyUSB0 115200  # ESP32 Encoders
+sudo screen /dev/ttyUSB1 9600    # ESP32 PWM
+# (Ctrl+A, K para sair do screen)
+```
+
+### Problema: Robô não se move
+1. **Verificar se tópico existe:**
+   ```bash
+   ros2 topic list | grep mecanum_drive_controller/cmd_vel
+   ```
+
+2. **Se não existe, reiniciar sistema:**
+   - Parar ambos os launches (Ctrl+C)
+   - Desconectar/reconectar ESP32s fisicamente
+   - Reiniciar launches na ordem correta
+
+3. **Verificar logs:**
+   ```bash
+   ros2 topic echo /rosout | grep -i error
+   ```
+
+### Problema: Portas USB erradas
+- Editar os launches para ajustar as portas USB
+- Os launches tentam automaticamente portas alternativas
+
+## 📊 Monitoramento do Sistema
+
+```bash
+# Monitorar odometria
+ros2 topic echo /odom
+
+# Monitorar comandos PWM
+ros2 topic echo /mecanum_controller/commands
+
+# Monitorar velocidades das rodas
+ros2 topic echo /joint_states
+
+# Ver árvore de TF
+ros2 run tf2_tools view_frames
+```
+
+## 📁 Arquitetura do Sistema
+
+### Fluxo de Dados
+```
+[Teleop] → [/cmd_vel] → [mecanum_drive_controller] → [/mecanum_controller/commands] → [caramelo_hw_interface_node] → [ESP32 PWM] → [Motores]
+                                                                                                                            ↑
+[ESP32 Encoders] → [encoder_joint_state_node] → [/joint_states] → [joint_state_broadcaster] ----------------------→ [Feedback]
+```
+
+### Estrutura dos Arquivos
+```
+caramelo_bringup/
+├── launch/
+│   ├── bringup_encoder.launch.py      # 🔥 ESP32 Encoders + Odometria
+│   ├── bringup_pwm.launch.py          # 🔥 ESP32 PWM + Controllers
+│   └── teleop_keyboard.launch.py      # 🎮 Controle via teclado
+├── caramelo_bringup/
+│   ├── caramelo_hw_interface_node.py  # Interface PWM
+│   ├── encoder_joint_state_node.py    # Odometria real
+│   └── twist_converter_node.py        # Conversor Twist→TwistStamped
+├── config/
+│   └── robot_controllers.yaml         # Config mecanum controller
+├── urdf/
+│   └── caramelo_real.urdf.xacro       # URDF para hardware real
+├── rviz/
+│   └── caramelo_complete.rviz         # Config RViz
+├── ESP32_PWM_writer.ino               # 📟 Código ESP32 motores
+├── esp32_encoder_reader.ino           # 📟 Código ESP32 encoders
+└── README.md                          # 📖 Este guia
+```
+
+### Launches Disponíveis
+- **`bringup_encoder.launch.py`** - Inicia ESP32 dos encoders, odometria e TF tree
+- **`bringup_pwm.launch.py`** - Inicia ESP32 dos motores, controllers e RViz
+- **`teleop_keyboard.launch.py`** - 🎮 Inicia controle via teclado + conversor automático
+
+### Sistema de Conversão de Comandos
+O controlador mecanum espera mensagens `TwistStamped`, mas o teleop_twist_keyboard publica `Twist` simples. 
+O launch `teleop_keyboard.launch.py` resolve isso automaticamente:
+
+```
+[teleop] → [/cmd_vel] (Twist) → [twist_converter_node] → [/mecanum_drive_controller/cmd_vel] (TwistStamped) → [controlador]
+```
+
+## 🎯 Comandos de Referência Rápida
+
+### Sequência Completa de Inicialização:
+```bash
+# 1. Permissões (sempre executar)
+sudo chmod 777 /dev/ttyUSB*
+
+# 2. Workspace
+cd ~/Caramelo_workspace
+source install/setup.bash
+
+# 3. Terminal 1 - Encoders
+ros2 launch caramelo_bringup bringup_encoder.launch.py
+
+# 4. Terminal 2 - PWMs (aguardar Terminal 1 conectar)
+ros2 launch caramelo_bringup bringup_pwm.launch.py
+
+# 5. Terminal 3 - Controle
+ros2 launch caramelo_bringup teleop_keyboard.launch.py
+```
+
+### Verificação Rápida:
+```bash
+# Tudo funcionando?
+ros2 topic list | grep mecanum_drive_controller/cmd_vel && echo "✅ Sistema OK"
+
+# Controllers ativos?
+ros2 control list_controllers
+```
+
+## 📞 Manutenção
+
+**Desenvolvido por:** Victor Oliveira Ayres  
+**Email:** victoroliveiraayres@gmail.com  
+**Data:** Junho 2025  
+**ROS 2:** Jazzy  
+**Sistema:** Ubuntu 24.04  
+
+### Próximos Passos
+- ✅ **Controle básico** - Funcionando
+- ✅ **Odometria** - Funcionando  
+- ⏳ **LIDAR** - Integrar RPLidar para SLAM
+- ⏳ **Navegação** - NAV2 + SLAM Toolbox

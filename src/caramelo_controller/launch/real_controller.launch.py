@@ -7,24 +7,31 @@ from launch_ros.parameter_descriptions import ParameterValue
 
 def generate_launch_description():
     
-    # Carrega o URDF para GAZEBO (do caramelo_description)
+    # Carrega o URDF para HARDWARE REAL (do caramelo_bringup)
     robot_description_content = Command([
         PathJoinSubstitution([FindExecutable(name="xacro")]),
         " ",
         PathJoinSubstitution([
-            FindPackageShare("caramelo_description"),
-            "URDF",
-            "robot.urdf.xacro"
+            FindPackageShare("caramelo_bringup"),
+            "urdf",
+            "caramelo_real.urdf.xacro"
         ])
     ])
     
     robot_description = {"robot_description": ParameterValue(robot_description_content, value_type=str)}
     
+    # Arquivo de configuração dos controladores
+    robot_controllers = PathJoinSubstitution([
+        FindPackageShare("caramelo_bringup"),
+        "config",
+        "robot_controllers.yaml"
+    ])
+    
     # Controller Manager (OBRIGATÓRIO!)
     controller_manager = Node(
         package="controller_manager",
         executable="ros2_control_node",
-        parameters=[robot_description],
+        parameters=[robot_description, robot_controllers],
         output="screen",
     )
     

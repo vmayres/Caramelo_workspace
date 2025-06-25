@@ -31,6 +31,7 @@
 // ROS 2 message types
 #include "geometry_msgs/msg/twist_stamped.hpp"
 #include "nav_msgs/msg/odometry.hpp"
+#include "std_msgs/msg/float64_multi_array.hpp"
 #include "mecanum_drive_controller/odometry.hpp"
 // ROS 2 lifecycle and utilities
 #include "rclcpp_lifecycle/state.hpp"
@@ -161,6 +162,11 @@ protected:
   std::shared_ptr<rclcpp::Publisher<tf2_msgs::msg::TFMessage>> odometry_transform_publisher_ = nullptr;
   std::shared_ptr<realtime_tools::RealtimePublisher<tf2_msgs::msg::TFMessage>>
     realtime_odometry_transform_publisher_ = nullptr;
+
+  // Publishers for wheel commands
+  std::shared_ptr<rclcpp::Publisher<std_msgs::msg::Float64MultiArray>> wheel_commands_publisher_ = nullptr;
+  std::shared_ptr<realtime_tools::RealtimePublisher<std_msgs::msg::Float64MultiArray>>
+    realtime_wheel_commands_publisher_ = nullptr;
 
   // Subscriber for velocity commands
   bool subscriber_is_active_ = false;

@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<robot name="caramelo_real" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!-- Propriedades -->
+  <xacro:property name="M_PI" value="3.1415926535897931" />
+
+  <!-- Argumentos -->
+  <xacro:arg name="robot_name" default="caramelo"/>
+  <xacro:arg name="prefix" default=""/>
+
+  <!-- Inclusões do caramelo_description (apenas visualização) -->
+  <xacro:include filename="$(find caramelo_description)/URDF/robot_base.xacro" />
+  <xacro:include filename="$(find caramelo_description)/URDF/robot_mecanum_wheel.xacro" />
+  <xacro:include filename="$(find caramelo_description)/URDF/lidar_sensor.xacro" />
+
+  <!-- base_footprint -->
+  <link name="base_footprint"/>
+
+  <!-- Base -->
+  <xacro:robot_base parent="base_footprint"/>
+
+  <!-- Rodas mecanum -->
+  <xacro:mecanum_wheel
+    prefix="$(arg prefix)"
+    side="front_left"
+    x_reflect="1"
+    y_reflect="1"/>
+
+  <xacro:mecanum_wheel
+    prefix="$(arg prefix)"
+    side="front_right"
+    x_reflect="1"
+    y_reflect="-1"/>
+
+  <xacro:mecanum_wheel
+    prefix="$(arg prefix)"
+    side="rear_left"
+    x_reflect="-1"
+    y_reflect="1"/>
+
+  <xacro:mecanum_wheel
+    prefix="$(arg prefix)"
+    side="rear_right"
+    x_reflect="-1"
+    y_reflect="-1"/>
+
+  <!-- LiDAR -->
+  <xacro:lidar_sensor parent="base_link" xyz="0.290 0.0 0.120" rpy="0 0 0"/>
+
+  <!-- =============================================== -->
+  <!-- ROS 2 Control Configuration for REAL HARDWARE -->
+  <!-- =============================================== -->
+  <ros2_control name="caramelo_real_hardware" type="system">
+    
+    <!-- Hardware Plugin (Mock para hardware real - será substituído pelo nosso nó Python) -->
+    <hardware>
+      <plugin>mock_components/GenericSystem</plugin>
+      <param name="mock_sensor_commands">false</param>
+      <param name="state_following_offset">0.0</param>
+    </hardware>
+    
+    <!-- Joint para roda dianteira esquerda -->
+    <joint name="front_left_wheel_joint">
+      <command_interface name="velocity">
+        <param name="min">-30.0</param>
+        <param name="max">30.0</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    
+    <!-- Joint para roda dianteira direita -->
+    <joint name="front_right_wheel_joint">
+      <command_interface name="velocity">
+        <param name="min">-30.0</param>
+        <param name="max">30.0</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    
+    <!-- Joint para roda traseira esquerda -->
+    <joint name="rear_left_wheel_joint">
+      <command_interface name="velocity">
+        <param name="min">-30.0</param>
+        <param name="max">30.0</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    
+    <!-- Joint para roda traseira direita -->
+    <joint name="rear_right_wheel_joint">
+      <command_interface name="velocity">
+        <param name="min">-30.0</param>
+        <param name="max">30.0</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    
+  </ros2_control>
+
+</robot>
