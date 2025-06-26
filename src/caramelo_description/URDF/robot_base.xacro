@@ -5,35 +5,49 @@
 
     <!-- Propriedades da base do robô Caramelo -->
     <xacro:property name="mass" value="22.0"/>
-    <xacro:property name="width" value="0.580"/>   <!-- Comprimento -->
-    <xacro:property name="depth" value="0.380"/>   <!-- Largura -->
+    <xacro:property name="width_vertical" value="0.550"/>   <!-- Comprimento -->
+    <xacro:property name="depth_vertical" value="0.210"/>   <!-- Largura -->
+    <xacro:property name="width_horizontal" value="0.330"/>   <!-- Comprimento -->
+    <xacro:property name="depth_horizontal" value="0.320"/>   <!-- Largura -->
     <xacro:property name="height" value="0.105"/>  <!-- Altura -->
     <xacro:property name="wheel_radius" value="0.05"/>
 
     <!-- Link da base (base_link agora toca o chão) -->
     <link name="base_link">
+
       <visual>
         <origin xyz="0 0 ${height/2.0}" rpy="0 0 0"/>
         <geometry>
-          <box size="${width} ${depth} ${height}"/>
+          <box size="${width_vertical} ${depth_vertical} ${height}"/>
         </geometry>
-        <material name="black">
-          <color rgba="0.0 0.0 0.0 1.0"/>
+        <material name="darkgray">
+          <color rgba="0.3 0.3 0.3 1.0"/>
         </material>
       </visual>
+      <visual>
+        <origin xyz="0 0 ${height/2.0}" rpy="0 0 0"/>
+        <geometry>
+          <box size="${depth_horizontal} ${width_horizontal} ${height}"/>
+        </geometry>
+        <material name="darkgray">
+          <color rgba="0.3 0.3 0.3 1.0"/>
+        </material>
+      </visual>
+
       <collision>
         <origin xyz="0 0 ${height/2.0}" rpy="0 0 0"/>
         <geometry>
-          <box size="${width} ${depth} ${height}"/>
+          <box size="${width_vertical} ${depth_vertical} ${height}"/>
         </geometry>
       </collision>
+
       <inertial>
         <mass value="${mass}"/>
         <origin xyz="0 0 ${height/2.0}" rpy="0 0 0"/>
         <inertia
-          ixx="${1/12.0 * mass * (height*height + depth*depth)}"
-          iyy="${1/12.0 * mass * (width*width + depth*depth)}"
-          izz="${1/12.0 * mass * (width*width + height*height)}"
+          ixx="${1/12.0 * mass * (height*height + depth_vertical*depth_vertical)}"
+          iyy="${1/12.0 * mass * (width_vertical*width_vertical + depth_vertical*depth_vertical)}"
+          izz="${1/12.0 * mass * (width_vertical*width_vertical + height*height)}"
           ixy="0.0" ixz="0.0" iyz="0.0"/>
       </inertial>
     </link>
@@ -49,8 +63,8 @@
     <gazebo reference="base_link">
       <visual>
         <material>
-          <ambient>0.0 0.0 0.0 1.0</ambient>
-          <diffuse>0.0 0.0 0.0 1.0</diffuse>
+          <ambient>0.3 0.3 0.3 1.0</ambient>
+          <diffuse>0.3 0.3 0.3 1.0</diffuse>
           <specular>0.1 0.1 0.1 1.0</specular>
           <emissive>0.0 0.0 0.0 1.0</emissive>
         </material>
