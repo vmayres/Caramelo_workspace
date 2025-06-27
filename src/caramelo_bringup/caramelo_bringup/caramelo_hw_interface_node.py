@@ -96,8 +96,8 @@ class CarameloHWInterfaceNode(Node):
 
     def setup_serial_connection(self):
         """Configura e testa a conexão serial com reset automático"""
-        # Lista de portas para tentar (PWM geralmente em porta diferente dos encoders)
-        pwm_ports = ['/dev/ttyUSB0', '/dev/ttyUSB2', '/dev/ttyUSB3']
+        # PWM sempre na porta USB0
+        pwm_ports = ['/dev/ttyUSB0']
         
         for port in pwm_ports:
             try:
@@ -137,7 +137,7 @@ class CarameloHWInterfaceNode(Node):
         # Se chegou aqui, nenhuma porta funcionou
         self.get_logger().error("❌ Erro: Não foi possível conectar a ESP32 PWM em nenhuma porta")
         self.get_logger().warn("🔍 Verifique se a ESP32 PWM está conectada")
-        self.get_logger().warn("🔍 Portas tentadas: /dev/ttyUSB0, /dev/ttyUSB2, /dev/ttyUSB3")
+        self.get_logger().warn("🔍 Porta tentada: /dev/ttyUSB0")
         self.connection_established = False
 
     def check_connection(self):

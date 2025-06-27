@@ -29,12 +29,12 @@ class EncoderJointStateNode(Node):
         self.pulses_per_rev = 114688  # Pulsos por revolução do motor corrigido
         self.meters_per_pulse = (2 * math.pi * self.wheel_radius) / self.pulses_per_rev  # Distância linear por pulso (metros)
         
-        # Estado dos joints
+        # Estado dos joints (nomes correspondentes ao URDF)
         self.joint_names = [
             'front_left_wheel_joint',
             'front_right_wheel_joint',
-            'rear_left_wheel_joint',
-            'rear_right_wheel_joint'
+            'back_left_wheel_joint',
+            'back_right_wheel_joint'
         ]
         self.position = [0.0, 0.0, 0.0, 0.0]
         self.velocity = [0.0, 0.0, 0.0, 0.0]

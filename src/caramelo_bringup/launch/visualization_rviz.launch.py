@@ -3,7 +3,8 @@
 from launch import LaunchDescription
 from launch_ros.actions import Node
 from launch.actions import DeclareLaunchArgument
-from launch.substitutions import LaunchConfiguration
+from launch.substitutions import LaunchConfiguration, Command
+from launch_ros.parameter_descriptions import ParameterValue
 import os
 from ament_index_python.packages import get_package_share_directory
 
@@ -23,16 +24,20 @@ def generate_launch_description():
     
     # Caminho para os arquivos de configuração
     pkg_caramelo_bringup = get_package_share_directory('caramelo_bringup')
+    pkg_caramelo_description = get_package_share_directory('caramelo_description')
     rviz_config_file = os.path.join(pkg_caramelo_bringup, 'config', 'caramelo_complete.rviz')
     
-    # TF estático: base_link → laser_frame
+    # Caminho para o URDF do robô
+    xacro_file = os.path.join(pkg_caramelo_description, 'URDF', 'robot.urdf.xacro')
+    
+    # TF estático: base_link → laser_frame (sintaxe nova)
     # Ajuste as coordenadas conforme a posição real do LIDAR no robô
     # Assumindo LIDAR no centro, 20cm acima da base
     static_tf_laser = Node(
         package='tf2_ros',
         executable='static_transform_publisher',
         name='static_tf_laser',
-        arguments=['0', '0', '0.2', '0', '0', '0', 'base_link', 'laser_frame'],
+        arguments=['--x', '0', '--y', '0', '--z', '0.2', '--roll', '0', '--pitch', '0', '--yaw', '0', '--frame-id', 'base_link', '--child-frame-id', 'laser_frame'],
         output='screen'
     )
     
@@ -42,7 +47,7 @@ def generate_launch_description():
         package='tf2_ros',
         executable='static_transform_publisher',
         name='static_tf_odom',
-        arguments=['0', '0', '0', '0', '0', '0', 'odom', 'base_link'],
+        arguments=['--x', '0', '--y', '0', '--z', '0', '--roll', '0', '--pitch', '0', '--yaw', '0', '--frame-id', 'odom', '--child-frame-id', 'base_link'],
         output='screen'
     )
     
@@ -51,48 +56,21 @@ def generate_launch_description():
         package='tf2_ros',
         executable='static_transform_publisher',
         name='static_tf_map',
-        arguments=['0', '0', '0', '0', '0', '0', 'map', 'odom'],
+        arguments=['--x', '0', '--y', '0', '--z', '0', '--roll', '0', '--pitch', '0', '--yaw', '0', '--frame-id', 'map', '--child-frame-id', 'odom'],
         output='screen'
     )
     
-    # Robot State Publisher (publica TF do modelo do robô)
-    # Vai usar um URDF simples se não existir um específico
+    # Robot State Publisher (usa o URDF real do robô)
     robot_state_publisher = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
         name='robot_state_publisher',
         output='screen',
         parameters=[{
-            'robot_description': """
-            <?xml version="1.0"?>
-            <robot name="caramelo">
-              <link name="base_link">
-                <visual>
-                  <geometry>
-                    <box size="0.4 0.3 0.1"/>
-                  </geometry>
-                  <material name="blue">
-                    <color rgba="0 0 1 1"/>
-                  </material>
-                </visual>
-              </link>
-              <link name="laser_frame">
-                <visual>
-                  <geometry>
-                    <cylinder radius="0.05" length="0.1"/>
-                  </geometry>
-                  <material name="red">
-                    <color rgba="1 0 0 1"/>
-                  </material>
-                </visual>
-              </link>
-              <joint name="laser_joint" type="fixed">
-                <parent link="base_link"/>
-                <child link="laser_frame"/>
-                <origin xyz="0 0 0.2" rpy="0 0 0"/>
-              </joint>
-            </robot>
-            """,
+            'robot_description': ParameterValue(
+                Command(['xacro ', xacro_file]),
+                value_type=str
+            ),
             'use_sim_time': use_sim_time
         }]
     )

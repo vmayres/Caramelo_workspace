@@ -2,6 +2,9 @@
 
 Este workspace contém os pacotes para simulação e controle de um robô omnidirecional com rodas mecanum usando ROS2 Jazzy e Gazebo Ignition Harmonic.
 
+> ⚠️ **IMPORTANTE**: Este projeto foi configurado especificamente para **ROS2 Jazzy**. 
+> Para instruções detalhadas de configuração, consulte [ROS2_JAZZY_SETUP.md](./ROS2_JAZZY_SETUP.md)
+
 ## Estrutura dos Pacotes
 
 - **caramelo_description**: Contém os arquivos URDF/Xacro do robô

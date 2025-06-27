@@ -10,8 +10,9 @@ def generate_launch_description():
     Launch para RPLidar S2 do robô Caramelo.
     
     Este launch inicia:
-    1. Driver do RPLidar S2 na porta USB0
-    2. Configurações otimizadas para navegação
+    1. Driver do RPLidar S2 na porta USB2
+    2. Filtro laser para limitar ângulo a 180° frontal
+    3. Configurações otimizadas para navegação
     """
     
     # Argumentos do launch
@@ -25,7 +26,7 @@ def generate_launch_description():
         output='screen',
         parameters=[{
             'channel_type': 'serial',                # Tipo de canal
-            'serial_port': '/dev/ttyUSB0',           # Porta específica do LIDAR
+            'serial_port': '/dev/ttyUSB2',           # LIDAR sempre na porta USB2
             'serial_baudrate': 1000000,              # Baudrate correto para S2 (1M)
             'frame_id': 'laser_frame',               # Frame do LIDAR no TF tree
             'inverted': False,                       # Não inverter leituras
@@ -34,7 +35,7 @@ def generate_launch_description():
             'use_sim_time': use_sim_time
         }],
         remappings=[
-            ('/scan', '/scan')                       # Tópico padrão do laser scan
+            ('scan', '/scan')                        # Publicar diretamente no /scan
         ]
     )
     

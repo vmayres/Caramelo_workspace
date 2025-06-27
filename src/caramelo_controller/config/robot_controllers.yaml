@@ -36,7 +36,7 @@ mecanum_drive_controller:
     back_right_wheel_radius_multiplier: 1.0
     
     # Frame IDs
-    base_frame_id: "base_footprint"
+    base_frame_id: "base_link"
     odom_frame_id: "odom"
     
     # Publishing

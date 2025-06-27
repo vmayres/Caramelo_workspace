@@ -1,19 +1,21 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <xacro:macro name="robot_base" params="parent">
+  <!-- Propriedades da base do robô Caramelo -->
+  <xacro:property name="mass" value="22.0"/>
+  <xacro:property name="width_vertical" value="0.550"/>   <!-- Comprimento -->
+  <xacro:property name="depth_vertical" value="0.210"/>   <!-- Largura -->
+  <xacro:property name="width_horizontal" value="0.330"/>   <!-- Comprimento -->
+  <xacro:property name="depth_horizontal" value="0.320"/>   <!-- Largura -->
+  <xacro:property name="height" value="0.105"/>  <!-- Altura -->
+  <xacro:property name="wheel_radius" value="0.05"/>
 
-    <!-- Propriedades da base do robô Caramelo -->
-    <xacro:property name="mass" value="22.0"/>
-    <xacro:property name="width_vertical" value="0.550"/>   <!-- Comprimento -->
-    <xacro:property name="depth_vertical" value="0.210"/>   <!-- Largura -->
-    <xacro:property name="width_horizontal" value="0.330"/>   <!-- Comprimento -->
-    <xacro:property name="depth_horizontal" value="0.320"/>   <!-- Largura -->
-    <xacro:property name="height" value="0.105"/>  <!-- Altura -->
-    <xacro:property name="wheel_radius" value="0.05"/>
+  <xacro:macro name="robot_base" params="prefix">
+    <!-- BAsefootprint link -->
+    <link name="${prefix}base_footprint"/>
 
     <!-- Link da base (base_link agora toca o chão) -->
-    <link name="base_link">
+    <link name="${prefix}base_link">
 
       <visual>
         <origin xyz="0 0 ${height/2.0}" rpy="0 0 0"/>
@@ -53,14 +55,14 @@
     </link>
 
     <!-- Joint com o footprint (ajustado para as dimensões do Caramelo) -->
-    <joint name="base_joint" type="fixed">
-      <parent link="${parent}"/>
-      <child link="base_link"/>
-      <origin xyz="0 0 ${wheel_radius - 0.01}" rpy="0 0 0"/>
+    <joint name="${prefix}base_joint" type="fixed">
+      <parent link="${prefix}base_footprint"/>
+      <child link="${prefix}base_link"/>
+      <origin xyz="0 0 ${wheel_radius - 0.02}" rpy="0 0 0"/>
     </joint>
 
     <!-- Aparência no Gazebo -->
-    <gazebo reference="base_link">
+    <gazebo reference="${prefix}base_link">
       <visual>
         <material>
           <ambient>0.3 0.3 0.3 1.0</ambient>

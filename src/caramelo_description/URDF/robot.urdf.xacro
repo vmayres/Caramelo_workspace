@@ -17,11 +17,9 @@
   <xacro:include filename="$(find caramelo_description)/URDF/lidar_sensor.xacro" />
   <xacro:include filename="$(find caramelo_description)/URDF/robot_ros2_control.xacro" />
 
-  <!-- base_footprint -->
-  <link name="base_footprint"/>
-
   <!-- Base -->
-  <xacro:robot_base parent="base_footprint"/>
+  <xacro:robot_base 
+    prefix="$(arg prefix)"/>
 
   <!-- Rodas mecanum -->
   <xacro:mecanum_wheel
@@ -48,7 +46,15 @@
     x_reflect="-1"
     y_reflect="-1"/>
 
-  <!-- LiDAR (ajustado para as dimensões do YouBot) -->
-  <xacro:lidar_sensor parent="base_link" xyz="0.292 0.0 0.077" rpy="0 0 0"/>
+  <!-- RPLidar S2 - Posicionado na face frontal do robô -->
+  <xacro:lidar_sensor
+    prefix="$(arg prefix)"
+    parent="base_link"
+    frame_id="laser_frame"
+    xyz_offset="0.292 0 0.077"
+    rpy_offset="0 0 ${-M_PI}"
+    mesh_xyz_offset="0 0 0"
+    mesh_rpy_offset="0 0 0"
+    topic_name="scan"/>
 
 </robot>
