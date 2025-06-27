@@ -43,7 +43,34 @@ def generate_launch_description():
     )
     
     # ===============================================
-    # 3. Encoder Node (Odometria real)
+    # 3. Odom TF Publisher (Frame de referência global)
+    # ===============================================
+    # Opção 1: Usando static_transform_publisher (mais simples e eficiente)
+    odom_tf_static = Node(
+        package='tf2_ros',
+        executable='static_transform_publisher',
+        name='odom_tf_static_publisher',
+        arguments=['0', '0', '0', '0', '0', '0', 'odom', 'base_footprint'],
+        output='screen',
+        parameters=[{'use_sim_time': use_sim_time}],
+        respawn=True
+    )
+    
+    # Opção 2: Usando nó customizado (comentado - use se precisar de funcionalidades avançadas)
+    # odom_tf_publisher = Node(
+    #     package='caramelo_bringup',
+    #     executable='odom_tf_publisher_node',
+    #     name='odom_tf_publisher',
+    #     output='screen',
+    #     parameters=[
+    #         PathJoinSubstitution([caramelo_bringup_path, "config", "odom_tf_config.yaml"]),
+    #         {'use_sim_time': use_sim_time}
+    #     ],
+    #     respawn=True
+    # )
+    
+    # ===============================================
+    # 4. Encoder Node (Odometria real)
     # ===============================================
     encoder_node = Node(
         package='caramelo_bringup',
@@ -63,5 +90,6 @@ def generate_launch_description():
         
         # Ordem de inicialização:
         robot_state_publisher,           # 1. URDF primeiro
-        encoder_node,                   # 2. Inicia node dos encoders
+        odom_tf_static,                 # 2. TF odom -> base_footprint (estático)
+        encoder_node,                   # 3. Inicia node dos encoders
     ])
