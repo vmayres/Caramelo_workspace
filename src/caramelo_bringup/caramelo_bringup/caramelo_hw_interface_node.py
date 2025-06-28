@@ -44,8 +44,8 @@ class CarameloHWInterfaceNode(Node):
         self.joint_names = [
             'front_left_wheel_joint',
             'front_right_wheel_joint',
-            'rear_left_wheel_joint',
-            'rear_right_wheel_joint'
+            'back_left_wheel_joint',
+            'back_right_wheel_joint'
         ]
         
         # Timer para verificar conexão (apenas quando necessário)

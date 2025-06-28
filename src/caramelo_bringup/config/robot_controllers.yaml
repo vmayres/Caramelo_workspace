@@ -21,8 +21,8 @@ mecanum_drive_controller:
    # Joint names (using rear_ padronizado)
    front_left_joint_name: front_left_wheel_joint
    front_right_joint_name: front_right_wheel_joint
-   back_left_joint_name: rear_left_wheel_joint
-   back_right_joint_name: rear_right_wheel_joint
+   back_left_joint_name: back_left_wheel_joint
+   back_right_joint_name: back_right_wheel_joint
 
    # Robot physical parameters (Caramelo dimensions)
    wheel_base: 0.47        # Distância entre eixos dianteiro/traseiro 

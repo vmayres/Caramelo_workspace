@@ -43,18 +43,10 @@ def generate_launch_description():
     )
     
     # ===============================================
-    # 3. Odom TF Publisher (Frame de referência global)
+    # 3. Base Footprint TF Publisher - REMOVIDO
     # ===============================================
-    # Opção 1: Usando static_transform_publisher (mais simples e eficiente)
-    odom_tf_static = Node(
-        package='tf2_ros',
-        executable='static_transform_publisher',
-        name='odom_tf_static_publisher',
-        arguments=['0', '0', '0', '0', '0', '0', 'odom', 'base_footprint'],
-        output='screen',
-        parameters=[{'use_sim_time': use_sim_time}],
-        respawn=True
-    )
+    # A transformação base_footprint -> base_link já está definida no URDF
+    # através do joint "base_joint", não precisa de static transform publisher
     
     # Opção 2: Usando nó customizado (comentado - use se precisar de funcionalidades avançadas)
     # odom_tf_publisher = Node(
@@ -89,7 +81,6 @@ def generate_launch_description():
         ),
         
         # Ordem de inicialização:
-        robot_state_publisher,           # 1. URDF primeiro
-        odom_tf_static,                 # 2. TF odom -> base_footprint (estático)
-        encoder_node,                   # 3. Inicia node dos encoders
+        robot_state_publisher,           # 1. URDF primeiro (inclui base_footprint -> base_link)
+        encoder_node,                   # 2. Inicia node dos encoders (odom -> base_footprint dinâmico)
     ])

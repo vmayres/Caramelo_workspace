@@ -276,7 +276,7 @@ class EncoderJointStateNode(Node):
         odom = Odometry()
         odom.header.stamp = timestamp.to_msg()
         odom.header.frame_id = 'odom'
-        odom.child_frame_id = 'base_link'
+        odom.child_frame_id = 'base_footprint'
         
         # Posição
         odom.pose.pose.position.x = self.x
@@ -315,11 +315,11 @@ class EncoderJointStateNode(Node):
         self.odom_pub.publish(odom)
 
     def publish_tf(self, timestamp):
-        """Publica transformação odom -> base_link"""
+        """Publica transformação odom -> base_footprint"""
         tf = TransformStamped()
         tf.header.stamp = timestamp.to_msg()
         tf.header.frame_id = 'odom'
-        tf.child_frame_id = 'base_link'
+        tf.child_frame_id = 'base_footprint'
         
         # Posição
         tf.transform.translation.x = self.x

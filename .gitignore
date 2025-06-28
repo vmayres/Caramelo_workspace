@@ -2,6 +2,7 @@
 build/
 install/
 log/
+old_caramelo_bringup_REFERENCE_ONLY/
 colcon_install_layout.*
 
 # === ROS 2 generated files ===
