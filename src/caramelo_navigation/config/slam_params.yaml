@@ -35,19 +35,19 @@ slam_toolbox:
     stack_size_to_use: 40000000 #// program needs a larger stack size to serialize large maps
     enable_interactive_mode: true
 
-    # General Parameters
+    # General Parameters - OTIMIZADO PARA SCAN MATCHING
     use_scan_matching: true
     use_scan_barycenter: true
-    minimum_travel_distance: 0.5
-    minimum_travel_heading: 0.5
-    scan_buffer_size: 10
-    scan_buffer_maximum_scan_distance: 10.0
-    link_match_minimum_response_fine: 0.1  
-    link_scan_maximum_distance: 1.5
-    loop_search_maximum_distance: 3.0
+    minimum_travel_distance: 0.2              # Reduzido para mais correções
+    minimum_travel_heading: 0.2               # Reduzido para mais correções
+    scan_buffer_size: 15                      # Aumentado para melhor matching
+    scan_buffer_maximum_scan_distance: 15.0   # Aumentado alcance
+    link_match_minimum_response_fine: 0.05    # Mais sensível para matching
+    link_scan_maximum_distance: 2.0           # Aumentado para melhor correção
+    loop_search_maximum_distance: 4.0         # Melhor detecção de loops
     do_loop_closing: true 
-    loop_match_minimum_chain_size: 10           
-    loop_match_maximum_variance_coarse: 3.0  
+    loop_match_minimum_chain_size: 8          # Reduzido para loops menores
+    loop_match_maximum_variance_coarse: 2.0   # Mais rigoroso  
     loop_match_minimum_response_coarse: 0.35    
     loop_match_minimum_response_fine: 0.45
 

@@ -49,6 +49,13 @@ def generate_launch_description():
                          'launch', 'bringup_lidar.launch.py'))
     )
 
+    # Robot Localization EKF para fusão de sensores
+    start_ekf_cmd = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(get_package_share_directory(package_name),
+                         'launch', 'ekf_launch.py'))
+    )
+
     # Nó conversor Twist → TwistStamped (para compatibilidade com mecanum drive)
     twist_converter_node = Node(
         package='caramelo_bringup',
@@ -99,6 +106,7 @@ def generate_launch_description():
 
     # Adiciona ações
     ld.add_action(start_lidar_cmd)           # LIDAR
+    ld.add_action(start_ekf_cmd)            # EKF
     ld.add_action(twist_converter_node)      # Conversor de comandos
     ld.add_action(start_slam_toolbox_node)   # SLAM
     ld.add_action(start_lifecycle_manager_cmd) # Lifecycle manager

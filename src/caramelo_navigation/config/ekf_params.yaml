@@ -1,0 +1,96 @@
+ekf_filter_node:
+  ros__parameters:
+    # Configuração EKF para fusão de odometria encoder + scan matching
+    
+    # Frequência do filtro (Hz)
+    frequency: 30.0
+    
+    # Sensor timeout (sec)
+    sensor_timeout: 0.1
+    
+    # Usar dados de dois sensores: encoder odometry + visual odometry (do SLAM)
+    two_d_mode: true
+    
+    # Frame configurações
+    map_frame: map
+    odom_frame: odom
+    base_link_frame: base_footprint
+    world_frame: odom
+    
+    # === ODOMETRIA DOS ENCODERS ===
+    # Tópico: /odom (do encoder node)
+    odom0: /odom
+    odom0_config: [false, false, false,     # x, y, z (posição)
+                   false, false, false,     # roll, pitch, yaw (orientação)
+                   true,  true,  false,     # vx, vy, vz (velocidade linear)
+                   false, false, true,      # vroll, vpitch, vyaw (velocidade angular)
+                   false, false, false]     # ax, ay, az (aceleração)
+    
+    odom0_queue_size: 10
+    odom0_nodelay: false
+    odom0_differential: false
+    odom0_relative: false
+    
+    # Matriz de covariância para odometria dos encoders
+    # Valores maiores = menos confiança (mais ruído para mecanum com deslizamento)
+    odom0_pose_covariance: [1e-3, 0,    0,    0,    0,    0,
+                            0,    1e-3, 0,    0,    0,    0,
+                            0,    0,    1e6,  0,    0,    0,
+                            0,    0,    0,    1e6,  0,    0,
+                            0,    0,    0,    0,    1e6,  0,
+                            0,    0,    0,    0,    0,    1e-3]
+    
+    odom0_twist_covariance: [1e-3, 0,    0,    0,    0,    0,
+                             0,    1e-3, 0,    0,    0,    0,
+                             0,    0,    1e6,  0,    0,    0,
+                             0,    0,    0,    1e6,  0,    0,
+                             0,    0,    0,    0,    1e6,  0,
+                             0,    0,    0,    0,    0,    1e-3]
+    
+    # === ODOMETRIA CORRIGIDA (do SLAM/scan matching) ===
+    # Será conectada quando scan matching estiver disponível
+    # odom1: /odometry/filtered_scan
+    # odom1_config: [true,  true,  false,     # x, y, z (posição corrigida)
+    #                false, false, true,      # roll, pitch, yaw (orientação corrigida)
+    #                false, false, false,     # velocidades (usar apenas do encoder)
+    #                false, false, false,     # velocidades angulares
+    #                false, false, false]     # acelerações
+    
+    # Configurações do processo
+    process_noise_covariance: [0.05, 0,    0,    0,    0,    0,    0,     0,     0,    0,    0,    0,    0,    0,    0,
+                               0,    0.05, 0,    0,    0,    0,    0,     0,     0,    0,    0,    0,    0,    0,    0,
+                               0,    0,    0.06, 0,    0,    0,    0,     0,     0,    0,    0,    0,    0,    0,    0,
+                               0,    0,    0,    0.03, 0,    0,    0,     0,     0,    0,    0,    0,    0,    0,    0,
+                               0,    0,    0,    0,    0.03, 0,    0,     0,     0,    0,    0,    0,    0,    0,    0,
+                               0,    0,    0,    0,    0,    0.06, 0,     0,     0,    0,    0,    0,    0,    0,    0,
+                               0,    0,    0,    0,    0,    0,    0.025, 0,     0,    0,    0,    0,    0,    0,    0,
+                               0,    0,    0,    0,    0,    0,    0,     0.025, 0,    0,    0,    0,    0,    0,    0,
+                               0,    0,    0,    0,    0,    0,    0,     0,     0.04, 0,    0,    0,    0,    0,    0,
+                               0,    0,    0,    0,    0,    0,    0,     0,     0,    0.01, 0,    0,    0,    0,    0,
+                               0,    0,    0,    0,    0,    0,    0,     0,     0,    0,    0.01, 0,    0,    0,    0,
+                               0,    0,    0,    0,    0,    0,    0,     0,     0,    0,    0,    0.02, 0,    0,    0,
+                               0,    0,    0,    0,    0,    0,    0,     0,     0,    0,    0,    0,    0.01, 0,    0,
+                               0,    0,    0,    0,    0,    0,    0,     0,     0,    0,    0,    0,    0,    0.01, 0,
+                               0,    0,    0,    0,    0,    0,    0,     0,     0,    0,    0,    0,    0,    0,    0.015]
+    
+    # Configurações adicionais
+    use_control: false
+    stamped_control: false
+    control_timeout: 0.2
+    control_config: [true, false, false, false, false, true]
+    acceleration_limits: [1.3, 0.0, 0.0, 0.0, 0.0, 3.4]
+    deceleration_limits: [1.3, 0.0, 0.0, 0.0, 0.0, 4.5]
+    acceleration_gains: [0.8, 0.0, 0.0, 0.0, 0.0, 0.9]
+    deceleration_gains: [1.0, 0.0, 0.0, 0.0, 0.0, 1.0]
+    
+    # Para debugging (desabilitar em produção)
+    print_diagnostics: false
+    debug: false
+    debug_out_file: /tmp/ekf_debug.txt
+    
+    # Configurações avançadas para robô mecanum
+    permit_corrected_publication: false
+    publish_acceleration: false
+    publish_tf: true
+    transform_time_offset: 0.0
+    transform_timeout: 0.0
