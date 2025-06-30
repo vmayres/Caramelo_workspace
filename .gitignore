@@ -2,7 +2,6 @@
 build/
 install/
 log/
-old_caramelo_bringup_REFERENCE_ONLY/
 colcon_install_layout.*
 
 # === ROS 2 generated files ===
@@ -18,11 +17,13 @@ colcon_install_layout.*
 
 # === ROS 2 workspace overlays ===
 local_setup.*
-setup.*
+/install/setup.*
+/build/setup.*
 .env
 .env.*
-*.bash
-*.sh
+# Exclude generated shell scripts in install directory
+/install/*.bash
+/install/*.sh
 
 # === ROS 2 test results ===
 test_results/

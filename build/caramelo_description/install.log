@@ -4,6 +4,7 @@
 /home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/package.xml
 /home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/launch/gazebo.launch.py
 /home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/launch/display.launch.py
+/home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/launch/rviz.launch.py
 /home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/rviz/caramelo.rviz
 /home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/rviz/display.rviz
 /home/linux24-04/Caramelo_workspace/install/caramelo_description/share/caramelo_description/URDF/robot_base.xacro

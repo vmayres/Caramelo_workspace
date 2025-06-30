@@ -15,6 +15,7 @@ URDF/robot_ros2_control.xacro
 caramelo_description/__init__.py
 launch/display.launch.py
 launch/gazebo.launch.py
+launch/rviz.launch.py
 resource/caramelo_description
 rviz/caramelo.rviz
 rviz/display.rviz

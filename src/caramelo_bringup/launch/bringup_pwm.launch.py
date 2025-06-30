@@ -105,25 +105,7 @@ def generate_launch_description():
         ],
         output="screen"
     )
-    
-    # ===============================================
-    # 5. RViz com configuração específica (opcional)
-    # ===============================================
-    
-    # ===============================================
-    # 8. RViz com configuração específica (opcional)
-    # ===============================================
-    rviz_config_file = PathJoinSubstitution([caramelo_bringup_path, 'rviz', 'caramelo_complete.rviz'])
-    
-    rviz_node = Node(
-        package='rviz2',
-        executable='rviz2',
-        name='rviz2',
-        output='screen',
-        arguments=['-d', rviz_config_file],
-        parameters=[{'use_sim_time': use_sim_time}]
-    )
-    
+
     return LaunchDescription([
         DeclareLaunchArgument(
             'use_sim_time',
@@ -136,5 +118,4 @@ def generate_launch_description():
         esp_pwm_reboot_command,                 # 2. Reinicia ESP32 dos PWMs
         hw_interface_node,                      # 3. Hardware Interface (PWM)
         mecanum_drive_controller_spawner,       # 4. Mecanum Controller
-        rviz_node,                              # 5. RViz (opcional)
     ])

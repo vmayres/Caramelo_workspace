@@ -52,7 +52,7 @@
     parent="base_link"
     frame_id="laser_frame"
     xyz_offset="0.292 0 0.077"
-    rpy_offset="0 0 ${-M_PI}"
+    rpy_offset="0 0 0"
     mesh_xyz_offset="0 0 0"
     mesh_rpy_offset="0 0 0"
     topic_name="scan"/>

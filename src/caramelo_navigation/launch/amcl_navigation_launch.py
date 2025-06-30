@@ -50,11 +50,20 @@ def generate_launch_description():
                                    'config', 'amcl_params.yaml'),
         description='Arquivo de parâmetros do AMCL')
 
-    # LIDAR (rplidar)
+    # LIDAR (rplidar oficial)
     start_lidar_cmd = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
-            os.path.join(get_package_share_directory('caramelo_bringup'),
-                         'launch', 'bringup_lidar.launch.py'))
+            os.path.join(get_package_share_directory('rplidar_ros'),
+                         'launch', 'rplidar_s2_launch.py')),
+        launch_arguments={
+            'channel_type': 'serial',
+            'serial_port': '/dev/ttyUSB2',
+            'serial_baudrate': '1000000',
+            'frame_id': 'laser_frame',
+            'inverted': 'true',
+            'angle_compensate': 'true',
+            'scan_mode': 'DenseBoost'
+        }.items()
     )
 
     # Robot Localization EKF
