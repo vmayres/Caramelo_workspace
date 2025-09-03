@@ -4,10 +4,10 @@
 Fica no pacote 'gazebo_simulation' e usa o URDF/Xacro em 'yahboom_description'.
 
 Argumentos:
-  world_name: nome do mundo (arquivo .world em gazebo_simulation/worlds)
-  robot_model: caminho absoluto OU relativo (dentro de yahboom_description) para o xacro
-  use_rviz: abrir RViz
-  rviz_config: caminho para config do RViz (opcional)
+world_name: nome do mundo (arquivo .world em gazebo_simulation/worlds)
+robot_model: caminho absoluto OU relativo (dentro de yahboom_description) para o xacro
+use_rviz: abrir RViz
+rviz_config: caminho para config do RViz (opcional)
 """
 
 import os
