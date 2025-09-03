@@ -1,1 +1,0 @@
-controller_manager:joint_state_broadcaster:launch:launch_ros:mecanum_drive_controller:robot_state_publisher:xacro

@@ -12,7 +12,7 @@
     <xacro:include filename="$(find yahboom_description)/urdf/sensors/rgbd_camera.urdf.xacro"/>
     <xacro:include filename="$(find yahboom_description)/urdf/sensors/lidar.urdf.xacro"/>
     <xacro:include filename="$(find yahboom_description)/urdf/sensors/imu.urdf.xacro"/>
-    <xacro:include filename="$(find yahboom_description)/urdf/control/mec_mobile.gazebo"/>
+    <xacro:include filename="$(find yahboom_description)/urdf/control/robot_ros2_control.xacro" />
 
     <xacro:robot_3d_base prefix="$(arg prefix)"/>
 
@@ -128,6 +128,15 @@
     <!-- <material>Gazebo/Red</material> -->
   </gazebo>
    
-
+  <!-- Plugin para Gazebo Harmonic carregar os controladores -->
+    <gazebo>
+        <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+            <parameters>$(find robot_controller)/config/robot_controllers.yaml</parameters>
+            <controller_manager_node_name>controller_manager</controller_manager_node_name>
+            <ros>
+                <remapping>/controller_manager/robot_description:=/robot_description</remapping>
+            </ros>
+        </plugin>
+    </gazebo>
     
 </robot>

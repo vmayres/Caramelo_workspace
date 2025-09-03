@@ -20,6 +20,7 @@ from launch.actions import (
     IncludeLaunchDescription,
     SetEnvironmentVariable,
     OpaqueFunction,
+    TimerAction,
 )
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import (
@@ -44,6 +45,17 @@ def declare_args():
             'robot_model',
             default_value='urdf/robots/robot_3d.urdf.xacro',
             description='Caminho para Xacro (relativo ao pacote yahboom_description ou absoluto)'
+        ),
+        DeclareLaunchArgument(
+            'use_ros2_control',
+            default_value='true',
+            choices=['true', 'false'],
+            description='Se true, spawna controladores via ros2_control'
+        ),
+        DeclareLaunchArgument(
+            'controllers_file',
+            default_value=PathJoinSubstitution([FindPackageShare('robot_controller'), 'config', 'robot_controllers.yaml']),
+            description='Arquivo YAML de controladores'
         ),
         DeclareLaunchArgument(
             'use_rviz',
@@ -91,13 +103,9 @@ def launch_setup(context, *args, **kwargs):
 
     set_resource = SetEnvironmentVariable('GZ_SIM_RESOURCE_PATH', gz_resource_env)
 
-    ros_distro = os.environ.get('ROS_DISTRO', '')
-    is_ignition = 'True' if ros_distro == 'humble' else 'False'
-
     robot_description = ParameterValue(
         Command([
             'xacro ', robot_model_path, ' ',
-            'is_ignition:=', is_ignition, ' ',
             'use_gazebo:=true'
         ]),
         value_type=str
@@ -150,6 +158,29 @@ def launch_setup(context, *args, **kwargs):
         )
 
     actions = [set_resource, gz_sim, rsp, spawn, bridge_node]
+
+    # Spawners ros2_control (atraso para garantir carregamento do controller_manager dentro do plugin)
+    if LaunchConfiguration('use_ros2_control').perform(context) == 'true':
+        # joint_state_broadcaster
+        jsb_spawner = TimerAction(
+            period=4.0,
+            actions=[Node(
+                package='controller_manager',
+                executable='spawner',
+                arguments=['joint_state_broadcaster', '--controller-manager', '/controller_manager'],
+                output='screen'
+            )]
+        )
+        mecanum_spawner = TimerAction(
+            period=6.0,
+            actions=[Node(
+                package='controller_manager',
+                executable='spawner',
+                arguments=['mecanum_controller', '--controller-manager', '/controller_manager'],
+                output='screen'
+            )]
+        )
+        actions.extend([jsb_spawner, mecanum_spawner])
     if rviz:
         actions.append(rviz)
     return actions

@@ -34,7 +34,7 @@ setup(
     version='0.0.0',
     packages=find_packages(exclude=['test']),
     data_files=data_files,
-    install_requires=['setuptools'],
+    install_requires=['setuptools'],  # ROS dependencies handled via package.xml
     zip_safe=True,
     maintainer='linux24-04',
     maintainer_email='victoroliveiraayres@gmail.com',
@@ -43,6 +43,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            # Executable for converting geometry_msgs/Twist to TwistStamped
+            'twist_converter_node = gazebo_simulation.twist_converter_node:main',
         ],
     },
 )

@@ -3,6 +3,7 @@
 from launch import LaunchDescription
 from launch_ros.actions import Node
 
+
 def generate_launch_description():
     """
     Launch para controle via teclado do robô Caramelo.
@@ -17,7 +18,7 @@ def generate_launch_description():
     
     # Nó conversor Twist → TwistStamped
     twist_converter_node = Node(
-        package='caramelo_bringup',
+        package='gazebo_simulation',
         executable='twist_converter_node',
         name='twist_converter',
         output='screen',
@@ -35,7 +36,7 @@ def generate_launch_description():
         parameters=[],
         remappings=[
             # Publica em /cmd_vel (que será convertido pelo conversor)
-            ('cmd_vel', '/cmd_vel')
+            ('/cmd_vel', '/cmd_vel')
         ]
     )
     
