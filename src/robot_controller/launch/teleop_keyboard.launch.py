@@ -18,7 +18,7 @@ def generate_launch_description():
     
     # Nó conversor Twist → TwistStamped
     twist_converter_node = Node(
-        package='gazebo_simulation',
+        package='robot_controller',
         executable='twist_converter_node',
         name='twist_converter',
         output='screen',
