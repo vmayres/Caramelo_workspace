@@ -8,6 +8,9 @@ controller_manager:
     mecanum_controller:
       type: mecanum_drive_controller/MecanumDriveController
 
+    simple_velocity_controller:
+      type: velocity_controllers/JointGroupVelocityController
+
 # Configuração do controlador mecanum
 mecanum_controller:
   ros__parameters:
@@ -61,3 +64,12 @@ mecanum_controller:
     # linear_velocity.x.kp: 1.0
     # linear_velocity.y.kp: 1.0
     # angular_velocity.z.kp: 1.0
+
+
+simple_velocity_controller:
+  ros__parameters:
+    joints:
+      - front_left_wheel_joint
+      - front_right_wheel_joint
+      - back_right_wheel_joint
+      - back_left_wheel_joint
