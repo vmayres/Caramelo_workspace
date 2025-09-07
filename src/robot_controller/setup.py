@@ -23,6 +23,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'twist_converter_node = robot_controller.twist_converter_node:main',
         ],
     },
 )

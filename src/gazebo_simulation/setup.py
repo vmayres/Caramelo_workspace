@@ -43,8 +43,6 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            # Executable for converting geometry_msgs/Twist to TwistStamped
-            'twist_converter_node = gazebo_simulation.twist_converter_node:main',
         ],
     },
 )
