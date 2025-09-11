@@ -137,6 +137,10 @@
                 <remapping>/controller_manager/robot_description:=/robot_description</remapping>
             </ros>
         </plugin>
+        <!-- Sensor systems -->
+        <plugin filename="gz-sim-imu-system" name="gz::sim::systems::Imu"/>
+        <plugin filename="gz-sim-gpu-lidar-system" name="gz::sim::systems::GpuLidar"/>
+        <plugin filename="gz-sim-rgbd-camera-system" name="gz::sim::systems::RgbdCamera"/>
     </gazebo>
     
 </robot>

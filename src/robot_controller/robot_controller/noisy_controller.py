@@ -15,7 +15,8 @@ from tf_transformations import quaternion_from_euler
 class NoisyController(Node):
     def __init__(self):
         super().__init__("noisy_controller")
-        
+
+        # Parameters
         self.declare_parameter("wheel_radius", 0.0325)
         self.declare_parameter("wheel_base", 0.169)
         self.declare_parameter("wheel_separation", 0.169)
@@ -28,15 +29,17 @@ class NoisyController(Node):
         self.get_logger().info(f"Using wheel base {self.wheel_base_}")
         self.get_logger().info(f"Using wheel separation {self.wheel_separation_}")
 
+        # State
         self.prev_pos_ = [0.0, 0.0, 0.0, 0.0]  # FL, FR, RL, RR
         self.x_ = 0.0
         self.y_ = 0.0
         self.theta_ = 0.0
 
+        # IO
         self.joint_sub_ = self.create_subscription(JointState, "joint_states", self.jointCallback, 10)
-        self.odom_pub_ = self.create_publisher(Odometry, "bumperbot_controller/odom_noisy", 10)
+        self.odom_pub_ = self.create_publisher(Odometry, "mecanum_controller/odom_noisy", 10)
 
-        # Fill the Odometry message with invariant parameters
+        # Odometry message (invariants)
         self.odom_msg_ = Odometry()
         self.odom_msg_.header.frame_id = "odom"
         self.odom_msg_.child_frame_id = "base_footprint_ekf"
@@ -45,22 +48,35 @@ class NoisyController(Node):
         self.odom_msg_.pose.pose.orientation.z = 0.0
         self.odom_msg_.pose.pose.orientation.w = 1.0
 
-        # Fill the TF message
+        # TF message
         self.br_ = TransformBroadcaster(self)
         self.transform_stamped_ = TransformStamped()
         self.transform_stamped_.header.frame_id = "odom"
         self.transform_stamped_.child_frame_id = "base_footprint_noisy"
 
+        # Time handling: initialize with node clock; compute dt from msg stamp later
         self.prev_time_ = self.get_clock().now()
+        self._have_prev_pos_ = False
 
     def jointCallback(self, msg):
         # Mecanum: FL, FR, RL, RR
         # Add noise to each wheel
         pos = [msg.position[i] + np.random.normal(0, 0.005) for i in range(4)]
-        dt = Time.from_msg(msg.header.stamp) - self.prev_time_
+        now = Time.from_msg(msg.header.stamp)
+        # Compute dt using message timestamp minus previous time
+        dt = now - self.prev_time_
+        # Update prev_time_ immediately for next callback
+        self.prev_time_ = now
+        # Seed previous positions on first sample
+        if not self._have_prev_pos_:
+            self.prev_pos_ = pos.copy()
+            self._have_prev_pos_ = True
+            return
+        # Guard against zero/negative dt
+        if dt.nanoseconds <= 0:
+            return
         dpos = [pos[i] - self.prev_pos_[i] for i in range(4)]
         self.prev_pos_ = pos.copy()
-        self.prev_time_ = Time.from_msg(msg.header.stamp)
 
         # Wheel angular velocities
         fi = [dpos[i] / (dt.nanoseconds / S_TO_NS) for i in range(4)]
@@ -74,9 +90,10 @@ class NoisyController(Node):
         wz = r / (4 * (L + W)) * (-fi[0] + fi[1] - fi[2] + fi[3])
 
         # Integrate position
-        self.x_ += vx * (dt.nanoseconds / S_TO_NS)
-        self.y_ += vy * (dt.nanoseconds / S_TO_NS)
-        self.theta_ += wz * (dt.nanoseconds / S_TO_NS)
+        dt_s = dt.nanoseconds / S_TO_NS
+        self.x_ += vx * dt_s
+        self.y_ += vy * dt_s
+        self.theta_ += wz * dt_s
 
         # Compose and publish odometry
         q = quaternion_from_euler(0, 0, self.theta_)

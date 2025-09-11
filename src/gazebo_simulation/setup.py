@@ -38,8 +38,8 @@ setup(
     zip_safe=True,
     maintainer='linux24-04',
     maintainer_email='victoroliveiraayres@gmail.com',
-    description='Gazebo simulation launch and resources',
-    license='TODO: License declaration',
+    description='Pacote de simulação: launches do Gazebo (ros_gz_sim) e recursos (worlds/models).',
+    license='Apache-2.0',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
