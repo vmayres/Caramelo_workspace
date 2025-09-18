@@ -26,6 +26,7 @@ setup(
         'console_scripts': [
             'kalman_filter = robot_localizacao.kalman_filter:main',
             'imu_republisher.py = robot_localizacao.imu_republisher:main',
+            'odometry_motion_model = robot_localizacao.odometry_motion_model:main',
         ],
     },
 )
