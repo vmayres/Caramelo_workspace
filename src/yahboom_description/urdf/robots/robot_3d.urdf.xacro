@@ -139,8 +139,10 @@
         </plugin>
         <!-- Sensor systems -->
         <plugin filename="gz-sim-imu-system" name="gz::sim::systems::Imu"/>
-        <plugin filename="gz-sim-gpu-lidar-system" name="gz::sim::systems::GpuLidar"/>
-        <plugin filename="gz-sim-rgbd-camera-system" name="gz::sim::systems::RgbdCamera"/>
+        <plugin filename="gz-sim-sensors-system" name="gz::sim::systems::Sensors">
+          <render_engine>ogre2</render_engine>
+        </plugin>
+        <!-- <plugin filename="gz-sim-rgbd-camera-system" name="gz::sim::systems::RgbdCamera"/> -->
     </gazebo>
     
 </robot>

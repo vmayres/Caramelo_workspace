@@ -31,9 +31,9 @@
     min_range:='0.20'
     max_range:='30.0'
     range_resolution:='0.013'
-    topic_name:='scan'
+    topic_name:='/scan'
     always_on:=true
-    visualize:=false
+    visualize:=true
     enable_collision:=false">
 
     <xacro:property name="radius" value="${lidar_width/2}" />
@@ -85,7 +85,7 @@
         <diffuse>${gazebo_material_diffuse}</diffuse>
         <specular>${gazebo_material_specular}</specular>
       </material>
-      <sensor name="${prefix}lidar_sensor" type="gpu_lidar">
+  <sensor name="${prefix}lidar_sensor" type="gpu_lidar">
         <topic>${topic_name}</topic>
         <update_rate>${update_rate}</update_rate>
         <always_on>${always_on}</always_on>

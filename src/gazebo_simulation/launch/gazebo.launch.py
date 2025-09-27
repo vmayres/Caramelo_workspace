@@ -96,15 +96,18 @@ def launch_setup(context, *args, **kwargs):
         package='ros_gz_bridge',
         executable='parameter_bridge',
         arguments=[
-            '/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock',
-            # IMU (publicada pelo sensor como imu/data)
-            '/imu/data@sensor_msgs/msg/Imu[gz.msgs.IMU',
-            # LiDAR 2D (scan)
-            '/scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan',
-            # RGBD camera: imagem de profundidade e color (usa nome cam_1)
-            '/cam_1/image@sensor_msgs/msg/Image[gz.msgs.Image',
-            '/cam_1/depth_image@sensor_msgs/msg/Image[gz.msgs.Image',
-            '/cam_1/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo'
+            "/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock",
+            "/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist",
+            "/odom@nav_msgs/msg/Odometry@gz.msgs.Odometry",
+            "/joint_states@sensor_msgs/msg/JointState@gz.msgs.Model",
+            "/tf@tf2_msgs/msg/TFMessage@gz.msgs.Pose_V",
+            "/camera/image@sensor_msgs/msg/Image@gz.msgs.Image",
+            "/camera/camera_info@sensor_msgs/msg/CameraInfo@gz.msgs.CameraInfo",
+            "/imu@sensor_msgs/msg/Imu@gz.msgs.IMU", 
+            "/scan@sensor_msgs/msg/LaserScan@gz.msgs.LaserScan",             
+            "/scan/points@sensor_msgs/msg/PointCloud2@gz.msgs.PointCloudPacked", 
+            "/cam_1/depth_image@sensor_msgs/msg/Image@gz.msgs.Image",
+            "/cam_1/points@sensor_msgs/msg/PointCloud2@gz.msgs.PointCloudPacked", 
         ],
         remappings=[]
     )
