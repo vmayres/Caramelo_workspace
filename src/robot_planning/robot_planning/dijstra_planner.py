@@ -30,59 +30,50 @@ class GraphNode:
 class DijkstraPlanner(Node):
     def __init__(self):
         super().__init__("dijkstra_node")
+        self.tf_buffer = Buffer()
+        self.tf_listener = TransformListener(self.tf_buffer, self)
 
         map_qos = QoSProfile(depth=10)
         map_qos.durability = DurabilityPolicy.TRANSIENT_LOCAL
 
-        # Subscribers
-        self.map_sub = self.create_subscription(OccupancyGrid, "/map", self.map_callback, map_qos)
-        self.pose_sub = self.create_subscription(PoseStamped, "/goal_pose", self.goal_callback, 10)
-        # Publishers
+        self.map_sub = self.create_subscription(
+            OccupancyGrid, "/costmap", self.map_callback, map_qos
+        )
+        self.pose_sub = self.create_subscription(
+            PoseStamped, "/goal_pose", self.goal_callback, 10
+        )
         self.path_pub = self.create_publisher(Path, "/dijkstra/path", 10)
         self.map_pub = self.create_publisher(OccupancyGrid, "/dijkstra/visited_map", 10)
 
-        # cria o mapa de ocupação e o mapa de visitados
         self.map_ = None
         self.visited_map_ = OccupancyGrid()
 
-        # TF2 Buffer and Listener
-        # Permite transformar coordenadas entre diferentes frames
-        self.tf_buffer = Buffer()
-        self.tf_listener = TransformListener(self.tf_buffer, self)
-
-    # Callback para receber o mapa de ocupação
-    # Armazena o mapa e inicializa o mapa de visitados
     def map_callback(self, map_msg: OccupancyGrid):
         self.map_ = map_msg
         self.visited_map_.header.frame_id = map_msg.header.frame_id
         self.visited_map_.info = map_msg.info
         self.visited_map_.data = [-1] * (map_msg.info.height * map_msg.info.width)
 
-    # Callback para receber a pose do objetivo
-    # Planeja o caminho do robô até o objetivo usando Dijkstra
     def goal_callback(self, pose: PoseStamped):
         if self.map_ is None:
-            self.get_logger().error("Nenhum mapa recebido ainda.")
+            self.get_logger().error("No map received!")
             return
 
-        # Reseta o mapa de visitados
         self.visited_map_.data = [-1] * (self.visited_map_.info.height * self.visited_map_.info.width)
 
-        # Tenta obter a transformação do frame do mapa para o frame base_footprint
         try:
-            map_to_base_tf = self.tf_buffer.lookup_transform(self.map_.header.frame_id, "base_footprint", rclpy.time.Time())
-        # Se não conseguir, loga o erro e retorna
+            map_to_base_tf = self.tf_buffer.lookup_transform(
+                self.map_.header.frame_id, "base_footprint", rclpy.time.Time()
+            )
         except LookupException:
             self.get_logger().error("Could not transform from map to base_footprint")
             return
 
-        # Converte a transformação para uma pose
         map_to_base_pose = Pose()
         map_to_base_pose.position.x = map_to_base_tf.transform.translation.x
         map_to_base_pose.position.y = map_to_base_tf.transform.translation.y
         map_to_base_pose.orientation = map_to_base_tf.transform.rotation
 
-        # Planeja o caminho do robô até a pose objetivo
         path = self.plan(map_to_base_pose, pose.pose)
         if path.poses:
             self.get_logger().info("Shortest path found!")
@@ -113,9 +104,9 @@ class DijkstraPlanner(Node):
                 new_node: GraphNode = active_node + (dir_x, dir_y)
                 
                 if (new_node not in visited_nodes and self.pose_on_map(new_node) and 
-                    self.map_.data[self.pose_to_cell(new_node)] == 0):
+                    0 <= self.map_.data[self.pose_to_cell(new_node)] < 99):
                     
-                    new_node.cost = active_node.cost + 1
+                    new_node.cost = active_node.cost + 1 + self.map_.data[self.pose_to_cell(new_node)]
                     new_node.prev = active_node
 
                     pending_nodes.put(new_node)
