@@ -38,7 +38,7 @@ def generate_launch_description():
                 get_package_share_directory("robot_controller"),
                 "config",
                 "joy_config.yaml",
-            ),
+                ),
             {"use_sim_time": LaunchConfiguration("use_sim_time")},
         ],
         output="screen",
